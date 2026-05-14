@@ -774,206 +774,47 @@
       }
     }
 
-    @media (max-width: 720px) {
-      .mega-menu-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .mega-image-wrap {
-        height: 360px;
-      }
-
-      .mega-topline {
-        align-items: flex-start;
-        flex-direction: column;
-      }
-    }
-
-
-    .logo-card.logo-only {
-      width: min(88%, 520px);
-      aspect-ratio: 1 / 1;
-      border-radius: 34px;
-      padding: 26px;
-      background:
-        radial-gradient(circle at center, rgba(255,255,255,0.08), rgba(255,255,255,0.02) 58%, rgba(255,255,255,0.01) 100%);
-      border: 1px solid rgba(255,255,255,0.12);
-      display: grid;
-      place-items: center;
-      overflow: hidden;
-      box-shadow:
-        inset 0 0 80px rgba(255,255,255,0.04),
-        0 40px 120px rgba(0,0,0,0.45);
-      backdrop-filter: blur(18px);
-      animation: float 5s ease-in-out infinite;
-    }
-
-    .logo-card.logo-only .main-logo {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      object-position: center;
-      filter: drop-shadow(0 18px 36px rgba(0,0,0,0.55));
-    }
-
-    .owner-photo-card {
-      border: 1px solid rgba(255,255,255,0.12);
-      background: rgba(255,255,255,0.05);
-      border-radius: 30px;
-      overflow: hidden;
-      box-shadow: 0 28px 90px rgba(0,0,0,0.34);
-      min-height: 100%;
-    }
-
-    .owner-photo {
-      width: 100%;
-      height: 100%;
-      min-height: 560px;
-      display: block;
-      object-fit: cover;
-      object-position: center;
-    }
-
-    .owner-story h2 {
-      font-size: clamp(2rem, 4vw, 3.4rem);
-      line-height: 1;
-      letter-spacing: -0.05em;
-      margin-bottom: 18px;
-    }
-
-    .owner-story .eyebrow {
-      margin-bottom: 18px;
-    }
 
     @media (max-width: 720px) {
-      .owner-photo {
-        min-height: 420px;
-      }
-    }
-
-    .cta {
-      padding-bottom: 110px;
-    }
-
-    .cta-card {
-      border-radius: 34px;
-      border: 1px solid rgba(255,255,255,0.16);
-      background:
-        radial-gradient(circle at top left, rgba(255,255,255,0.14), transparent 35%),
-        rgba(255,255,255,0.07);
-      padding: clamp(30px, 5vw, 58px);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 30px;
-      box-shadow: 0 32px 120px rgba(0,0,0,0.38);
-    }
-
-    .cta-card h2 {
-      font-size: clamp(2.2rem, 4vw, 4rem);
-      line-height: 1;
-      letter-spacing: -0.055em;
-      margin-bottom: 16px;
-    }
-
-    .cta-card p {
-      color: var(--muted);
-      max-width: 650px;
-      line-height: 1.8;
-    }
-
-    footer {
-      border-top: 1px solid rgba(255,255,255,0.08);
-      padding: 30px 0 44px;
-      color: var(--muted);
-    }
-
-    .footer-wrap {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 18px;
-      flex-wrap: wrap;
-    }
-
-    .footer-brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .footer-brand img {
-      width: 42px;
-      height: 42px;
-      object-fit: contain;
-    }
-
-    @keyframes spin {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-12px); }
-    }
-
-    @media (max-width: 1020px) {
-      .nav-links {
-        display: none;
+      body {
+        overflow-x: hidden;
       }
 
-      .hero {
-        grid-template-columns: 1fr;
-        padding-top: 72px;
-        gap: 42px;
-      }
-
-      .hero-visual {
-        min-height: 560px;
-      }
-
-      .section-head,
-      .cta-card {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .feature-grid,
-      .about-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 720px) {
       .container {
-        width: min(100% - 24px, var(--max-width));
+        width: min(100% - 20px, var(--max-width));
       }
 
       .navbar {
-        top: 10px;
-        margin-top: 10px;
+        position: relative;
+        top: 0;
+        margin-top: 12px;
       }
 
       .nav-wrap {
         padding: 12px;
         border-radius: 24px;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 14px;
       }
 
       .brand {
-        padding: 6px 10px 6px 6px;
-        border-radius: 18px;
-        gap: 12px;
+        justify-content: center;
+        width: 100%;
+        padding: 8px 10px;
       }
 
       .brand-logo {
-        width: 88px;
-        height: 88px;
-        border-radius: 18px;
+        width: 92px;
+        height: 92px;
+      }
+
+      .brand-text {
+        align-items: flex-start;
       }
 
       .brand-text strong {
-        font-size: 0.88rem;
+        font-size: 0.94rem;
         letter-spacing: 0.14em;
       }
 
@@ -983,71 +824,291 @@
         letter-spacing: 0.12em;
       }
 
-      .nav-btn {
-        padding: 12px 14px;
-        font-size: 0.9rem;
+      .nav-links {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+        width: 100%;
+      }
+
+      .nav-links a {
+        text-align: center;
+        padding: 12px 10px;
+        border-radius: 999px;
+        background: rgba(255,255,255,0.06);
+        border: 1px solid rgba(255,255,255,0.10);
+        font-size: 0.92rem;
       }
 
       .hero {
-        padding: 52px 0 70px;
+        min-height: auto;
+        grid-template-columns: 1fr;
+        gap: 28px;
+        padding: 38px 0 64px;
+      }
+
+      .hero-copy {
+        text-align: center;
+      }
+
+      .eyebrow {
+        justify-content: center;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 0.76rem;
+        padding: 9px 12px;
+      }
+
+      h1 {
+        font-size: clamp(2.55rem, 11vw, 4rem);
+        line-height: 0.98;
+        letter-spacing: -0.055em;
+        margin-bottom: 18px;
       }
 
       .hero-copy p {
         font-size: 1rem;
-      }
-
-      .mini-stats {
-        grid-template-columns: 1fr;
+        line-height: 1.72;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 16px;
       }
 
       .hero-visual {
-        min-height: 430px;
+        min-height: auto;
       }
 
-      .floating-card {
-        position: static;
-        max-width: 100%;
-      }
-.logo-stage {
-        gap: 14px;
+      .logo-stage {
+        width: 100%;
+        min-height: auto;
         display: flex;
         flex-direction: column;
-        aspect-ratio: auto;
+        gap: 16px;
       }
 
-      .ring {
-        display: none;
-      }
-
-      .logo-card {
+      .logo-card.logo-only {
         width: 100%;
+        max-width: 420px;
+        aspect-ratio: 1 / 1;
+        padding: 18px;
+        border-radius: 28px;
+      }
+
+      .floating-card.bottom {
+        position: static;
+        max-width: 100%;
+        width: 100%;
+        text-align: center;
+        padding: 16px;
       }
 
       .section {
-        padding-bottom: 78px;
+        padding: 20px 0 68px;
       }
 
-      .panel {
-        padding: 24px;
-      }
-
-      .step {
+      .about-grid {
         grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .owner-photo-card {
+        order: 1;
+      }
+
+      .owner-story {
+        order: 2;
+        padding: 24px 20px;
+      }
+
+      .owner-photo {
+        min-height: 400px;
+        max-height: 520px;
+        object-position: center top;
+      }
+
+      .owner-story h2 {
+        font-size: 2.1rem;
+        text-align: center;
+      }
+
+      .owner-story .eyebrow {
+        margin-bottom: 14px;
+      }
+
+      .owner-story p {
+        font-size: 1rem;
+        line-height: 1.75;
+      }
+
+      .tag-list {
+        justify-content: center;
+      }
+
+      .section-head {
+        display: block;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+
+      .section-head h2 {
+        font-size: 2.15rem;
+        margin-bottom: 12px;
+      }
+
+      .section-head p {
+        font-size: 1rem;
+        line-height: 1.7;
+        margin: 0 auto;
+      }
+
+      .mega-menu-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+
+      .mega-card {
+        border-radius: 24px;
+      }
+
+      .mega-image-wrap {
+        height: 355px;
+      }
+
+      .mega-body {
+        padding: 18px 18px 20px;
+      }
+
+      .mega-topline {
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .mega-topline h3 {
+        font-size: 1.28rem;
+      }
+
+      .mega-price {
+        min-width: 78px;
+        padding: 11px 12px;
+        font-size: 0.95rem;
+      }
+
+      .mega-body p {
+        font-size: 0.96rem;
+        line-height: 1.65;
+        margin-bottom: 16px;
+      }
+
+      .mega-order-btn {
+        padding: 15px 14px;
+        font-size: 0.95rem;
+      }
+
+      .cta {
+        padding-bottom: 70px;
       }
 
       .cta-card {
+        padding: 26px 20px;
         border-radius: 26px;
+        text-align: center;
+        align-items: center;
+      }
+
+      .cta-card h2 {
+        font-size: 2rem;
+      }
+
+      .cta-card p {
+        font-size: 1rem;
+        line-height: 1.72;
+      }
+
+      .primary-btn {
+        width: 100%;
+        max-width: 320px;
+      }
+
+      .herbalife-footer-section {
+        padding-bottom: 48px;
       }
 
       .herbalife-footer-card {
-        flex-direction: column;
-        align-items: flex-start;
+        padding: 24px 20px;
+        border-radius: 26px;
+        text-align: center;
+        align-items: center;
+      }
+
+      .herbalife-footer-copy span {
+        justify-content: center;
+      }
+
+      .herbalife-footer-copy h2 {
+        font-size: 2rem;
+      }
+
+      .herbalife-footer-copy p {
+        font-size: 0.98rem;
+        line-height: 1.72;
       }
 
       .herbalife-logo-box {
         width: 100%;
+        max-width: 300px;
+      }
+
+
+      .team-section {
+        padding: 18px 0 70px;
+      }
+
+      .team-card {
+        grid-template-columns: 1fr;
+        gap: 18px;
+        padding: 24px 18px;
+        border-radius: 28px;
+        text-align: center;
+      }
+
+      .team-copy h2 {
+        font-size: 2.25rem;
+        margin-bottom: 14px;
+      }
+
+      .team-copy p {
+        font-size: 1rem;
+        line-height: 1.75;
+      }
+
+      .team-form {
+        padding: 18px;
+        border-radius: 24px;
+        text-align: left;
+      }
+
+      .form-row input,
+      .form-row select {
+        padding: 14px 14px;
+        font-size: 0.98rem;
+      }
+
+      .team-submit {
+        padding: 16px 18px;
+      }
+
+      .footer-wrap {
+        flex-direction: column;
+        text-align: center;
+        justify-content: center;
+      }
+
+      .footer-brand {
+        justify-content: center;
       }
     }
+
   </style>
 </head>
 
@@ -1072,11 +1133,10 @@
         <a href="#inicio">Inicio</a>
         <a href="#nosotros">Nosotros</a>
         <a href="#mega-te">Mega Té</a>
+        <a href="#unete-equipo">Únete a nuestro equipo</a>
         <a href="#contacto">Contacto</a>
       </div>
-
-      <a class="nav-btn" href="https://wa.me/18603748971?text=Hola%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20A%20Better%20You." target="_blank" rel="noopener noreferrer">Comenzar</a>
-    </nav>
+</nav>
   </header>
 
   <main>
@@ -1325,6 +1385,131 @@
     </section>
 
     
+
+    <section class="team-section container" id="unete-equipo">
+      <div class="team-card">
+        <div class="team-copy">
+          <div class="eyebrow">
+            <span class="eyebrow-dot"></span>
+            Únete a nuestro equipo
+          </div>
+
+          <h2>Crece con A Better You</h2>
+          <p>
+            ¿Te gustaría transformar tu estilo de vida y, de paso, generar ingresos extra?
+            Únete a nuestro equipo y descubre cómo hacer crecer tu potencial con nosotros.
+          </p>
+        </div>
+
+        <form class="team-form" id="teamForm">
+          <div class="form-row">
+            <label for="nombreCompleto">Nombre completo</label>
+            <input id="nombreCompleto" name="nombreCompleto" type="text" placeholder="Escribe tu nombre completo" required>
+          </div>
+
+          <div class="form-row">
+            <label for="puebloResidencia">Pueblo de residencia</label>
+            <select id="puebloResidencia" name="puebloResidencia" required>
+              <option value="" selected disabled>Selecciona tu pueblo</option>
+              <option value="Adjuntas">Adjuntas</option>
+              <option value="Aguada">Aguada</option>
+              <option value="Aguadilla">Aguadilla</option>
+              <option value="Aguas Buenas">Aguas Buenas</option>
+              <option value="Aibonito">Aibonito</option>
+              <option value="Añasco">Añasco</option>
+              <option value="Arecibo">Arecibo</option>
+              <option value="Arroyo">Arroyo</option>
+              <option value="Barceloneta">Barceloneta</option>
+              <option value="Barranquitas">Barranquitas</option>
+              <option value="Bayamón">Bayamón</option>
+              <option value="Cabo Rojo">Cabo Rojo</option>
+              <option value="Caguas">Caguas</option>
+              <option value="Camuy">Camuy</option>
+              <option value="Canóvanas">Canóvanas</option>
+              <option value="Carolina">Carolina</option>
+              <option value="Cataño">Cataño</option>
+              <option value="Cayey">Cayey</option>
+              <option value="Ceiba">Ceiba</option>
+              <option value="Ciales">Ciales</option>
+              <option value="Cidra">Cidra</option>
+              <option value="Coamo">Coamo</option>
+              <option value="Comerío">Comerío</option>
+              <option value="Corozal">Corozal</option>
+              <option value="Culebra">Culebra</option>
+              <option value="Dorado">Dorado</option>
+              <option value="Fajardo">Fajardo</option>
+              <option value="Florida">Florida</option>
+              <option value="Guánica">Guánica</option>
+              <option value="Guayama">Guayama</option>
+              <option value="Guayanilla">Guayanilla</option>
+              <option value="Guaynabo">Guaynabo</option>
+              <option value="Gurabo">Gurabo</option>
+              <option value="Hatillo">Hatillo</option>
+              <option value="Hormigueros">Hormigueros</option>
+              <option value="Humacao">Humacao</option>
+              <option value="Isabela">Isabela</option>
+              <option value="Jayuya">Jayuya</option>
+              <option value="Juana Díaz">Juana Díaz</option>
+              <option value="Juncos">Juncos</option>
+              <option value="Lajas">Lajas</option>
+              <option value="Lares">Lares</option>
+              <option value="Las Marías">Las Marías</option>
+              <option value="Las Piedras">Las Piedras</option>
+              <option value="Loíza">Loíza</option>
+              <option value="Luquillo">Luquillo</option>
+              <option value="Manatí">Manatí</option>
+              <option value="Maricao">Maricao</option>
+              <option value="Maunabo">Maunabo</option>
+              <option value="Mayagüez">Mayagüez</option>
+              <option value="Moca">Moca</option>
+              <option value="Morovis">Morovis</option>
+              <option value="Naguabo">Naguabo</option>
+              <option value="Naranjito">Naranjito</option>
+              <option value="Orocovis">Orocovis</option>
+              <option value="Patillas">Patillas</option>
+              <option value="Peñuelas">Peñuelas</option>
+              <option value="Ponce">Ponce</option>
+              <option value="Quebradillas">Quebradillas</option>
+              <option value="Rincón">Rincón</option>
+              <option value="Río Grande">Río Grande</option>
+              <option value="Sabana Grande">Sabana Grande</option>
+              <option value="Salinas">Salinas</option>
+              <option value="San Germán">San Germán</option>
+              <option value="San Juan">San Juan</option>
+              <option value="San Lorenzo">San Lorenzo</option>
+              <option value="San Sebastián">San Sebastián</option>
+              <option value="Santa Isabel">Santa Isabel</option>
+              <option value="Toa Alta">Toa Alta</option>
+              <option value="Toa Baja">Toa Baja</option>
+              <option value="Trujillo Alto">Trujillo Alto</option>
+              <option value="Utuado">Utuado</option>
+              <option value="Vega Alta">Vega Alta</option>
+              <option value="Vega Baja">Vega Baja</option>
+              <option value="Vieques">Vieques</option>
+              <option value="Villalba">Villalba</option>
+              <option value="Yabucoa">Yabucoa</option>
+              <option value="Yauco">Yauco</option>
+            </select>
+          </div>
+
+          <div class="form-row">
+            <label for="emailEquipo">Email</label>
+            <input id="emailEquipo" name="emailEquipo" type="email" placeholder="correo@ejemplo.com" required>
+          </div>
+
+          <div class="form-row">
+            <label for="telefonoEquipo">Número de teléfono</label>
+            <input id="telefonoEquipo" name="telefonoEquipo" type="tel" placeholder="(787) 000-0000" required>
+          </div>
+
+          <button type="submit" class="team-submit">Enviar solicitud por WhatsApp</button>
+          <p class="form-note">
+            Al enviar, se abrirá WhatsApp con tu información lista para compartir con A Better You.
+          </p>
+        </form>
+      </div>
+    </section>
+
     <section class="cta container" id="contacto">
       <div class="cta-card">
         <div>
@@ -1373,5 +1558,30 @@
       <span>Diseño listo para seguir desarrollando.</span>
     </div>
   </footer>
+
+  <script>
+    const teamForm = document.getElementById('teamForm');
+
+    if (teamForm) {
+      teamForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        const nombre = document.getElementById('nombreCompleto').value.trim();
+        const pueblo = document.getElementById('puebloResidencia').value.trim();
+        const email = document.getElementById('emailEquipo').value.trim();
+        const telefono = document.getElementById('telefonoEquipo').value.trim();
+
+        const mensaje =
+          'Hola, me interesa unirme al equipo de A Better You.%0A%0A' +
+          'Nombre completo: ' + encodeURIComponent(nombre) + '%0A' +
+          'Pueblo de residencia: ' + encodeURIComponent(pueblo) + '%0A' +
+          'Email: ' + encodeURIComponent(email) + '%0A' +
+          'Número de teléfono: ' + encodeURIComponent(telefono);
+
+        window.open('https://wa.me/18603748971?text=' + mensaje, '_blank');
+      });
+    }
+  </script>
+
 </body>
 </html>
