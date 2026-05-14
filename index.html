@@ -1792,11 +1792,12 @@
     </div>
   </footer>
 
-  
   <script>
-    const teamForm = document.getElementById('teamForm');
+    (function () {
+      const teamForm = document.getElementById('teamForm');
 
-    if (teamForm) {
+      if (!teamForm) return;
+
       teamForm.addEventListener('submit', function (event) {
         event.preventDefault();
 
@@ -1805,24 +1806,23 @@
         const email = document.getElementById('emailEquipo').value.trim();
         const telefono = document.getElementById('telefonoEquipo').value.trim();
 
-        const mensaje =
-          'Hola, me interesa unirme al equipo de A Better You.
-
-' +
-          'Nombre completo: ' + nombre + '
-' +
-          'Pueblo de residencia: ' + pueblo + '
-' +
-          'Email: ' + email + '
-' +
-          'Número de teléfono: ' + telefono;
+        const mensaje = [
+          'Hola, me interesa unirme al equipo de A Better You.',
+          '',
+          'Nombre completo: ' + nombre,
+          'Pueblo de residencia: ' + pueblo,
+          'Email: ' + email,
+          'Número de teléfono: ' + telefono
+        ].join('
+');
 
         const url = 'https://wa.me/18603748971?text=' + encodeURIComponent(mensaje);
-        window.open(url, '_blank');
-      });
-    }
-  </script>
 
+        // Abre WhatsApp correctamente sin enviar el formulario ni borrar los datos.
+        window.location.href = url;
+      });
+    })();
+  </script>
 
 </body>
 </html>
