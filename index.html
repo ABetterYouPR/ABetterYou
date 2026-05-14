@@ -1615,6 +1615,247 @@
       }
     }
 
+
+    /* =========================
+       PANEL ADMIN INTEGRADO AL MISMO INDEX
+       Acceso: ?admin=1 o #admin
+       ========================= */
+    #aby-admin-panel {
+      display: none;
+      position: relative;
+      z-index: 2;
+      width: min(100% - 32px, 1180px);
+      margin: 44px auto 90px;
+      padding: 0;
+      color: #f7f7f7;
+      --bg: #050505;
+      --card: rgba(255,255,255,0.07);
+      --card-strong: rgba(255,255,255,0.10);
+      --border: rgba(255,255,255,0.14);
+      --text: #f7f7f7;
+      --muted: rgba(255,255,255,0.68);
+      --radius: 28px;
+      --max: 1180px;
+    }
+
+    #aby-admin-panel.active {
+      display: block;
+    }
+
+    #aby-admin-panel .container {
+      width: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    #aby-admin-panel .admin-top-note {
+      margin-bottom: 18px;
+      padding: 14px 18px;
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.07);
+      color: rgba(255,255,255,0.90);
+      line-height: 1.65;
+      text-align: center;
+      backdrop-filter: blur(16px);
+    }
+
+    #aby-admin-panel .admin-close-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 12px;
+      padding: 12px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.16);
+      background: rgba(255,255,255,0.08);
+      color: #fff;
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    @media (max-width: 720px) {
+      #aby-admin-panel {
+        width: min(100% - 16px, 1180px);
+        margin: 28px auto 64px;
+      }
+    }
+
+#aby-admin-panel .container {
+      width: min(100% - 32px, var(--max));
+      margin: 0 auto;
+      padding: 38px 0 70px;
+    }#aby-admin-panel .admin-header,
+    #aby-admin-panel .login-card,
+    #aby-admin-panel .dashboard-card {
+      border: 1px solid var(--border);
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: 0 28px 90px rgba(0,0,0,0.32);
+      backdrop-filter: blur(18px);
+    }#aby-admin-panel .admin-header {
+      padding: 26px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 20px;
+    }#aby-admin-panel .admin-header h1 {
+      margin: 0 0 8px;
+      font-size: clamp(2rem, 5vw, 4rem);
+      letter-spacing: -0.055em;
+      line-height: 1;
+    }#aby-admin-panel .admin-header p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+    }#aby-admin-panel .pill {
+      padding: 11px 15px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.08);
+      color: rgba(255,255,255,0.92);
+      font-weight: 800;
+      white-space: nowrap;
+    }#aby-admin-panel .grid {
+      display: grid;
+      grid-template-columns: 0.92fr 1.08fr;
+      gap: 20px;
+    }#aby-admin-panel .login-card,
+    #aby-admin-panel .dashboard-card {
+      padding: clamp(20px, 3vw, 30px);
+    }#aby-admin-panel .login-card h2,
+    #aby-admin-panel .dashboard-card h2 {
+      margin: 0 0 12px;
+      font-size: 1.7rem;
+      letter-spacing: -0.04em;
+    }#aby-admin-panel .login-card p,
+    #aby-admin-panel .dashboard-card p {
+      color: var(--muted);
+      line-height: 1.7;
+    }#aby-admin-panel .form {
+      display: grid;
+      gap: 14px;
+      margin-top: 18px;
+    }#aby-admin-panel label {
+      display: grid;
+      gap: 8px;
+      font-size: 0.92rem;
+      font-weight: 800;
+    }#aby-admin-panel input,
+    #aby-admin-panel select {
+      width: 100%;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.16);
+      background: rgba(255,255,255,0.08);
+      color: #fff;
+      padding: 15px 16px;
+      outline: none;
+      font-size: 1rem;
+    }#aby-admin-panel select option {
+      color: #111;
+    }#aby-admin-panel input:focus,
+    #aby-admin-panel select:focus {
+      border-color: rgba(255,255,255,0.42);
+      box-shadow: 0 0 0 4px rgba(255,255,255,0.06);
+    }#aby-admin-panel button {
+      border: 1px solid rgba(255,255,255,0.72);
+      background: #fff;
+      color: #050505;
+      border-radius: 999px;
+      padding: 15px 20px;
+      font-size: 1rem;
+      font-weight: 900;
+      cursor: pointer;
+      transition: 0.24s ease;
+    }#aby-admin-panel button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 40px rgba(255,255,255,0.18);
+    }#aby-admin-panel .ghost-button {
+      background: rgba(255,255,255,0.08);
+      color: #fff;
+      border-color: rgba(255,255,255,0.16);
+    }#aby-admin-panel .admin-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+    }#aby-admin-panel .message {
+      display: none;
+      margin-top: 14px;
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      padding: 14px 16px;
+      line-height: 1.6;
+    }#aby-admin-panel .message.show { display: block; }#aby-admin-panel .message.error { background: rgba(255,128,105,0.10); border-color: rgba(255,128,105,0.34); }#aby-admin-panel .message.success { background: rgba(72,225,216,0.10); border-color: rgba(72,225,216,0.34); }#aby-admin-panel .toolbar {
+      display: flex;
+      gap: 12px;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      margin: 18px 0;
+    }#aby-admin-panel .search {
+      flex: 1 1 280px;
+    }#aby-admin-panel .table-wrap {
+      overflow-x: auto;
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,0.10);
+      background: rgba(255,255,255,0.05);
+    }#aby-admin-panel table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 860px;
+    }#aby-admin-panel th,
+    #aby-admin-panel td {
+      padding: 14px 14px;
+      text-align: left;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      vertical-align: top;
+      font-size: 0.95rem;
+    }#aby-admin-panel th {
+      color: rgba(255,255,255,0.76);
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }#aby-admin-panel td {
+      color: rgba(255,255,255,0.94);
+    }#aby-admin-panel .status-select {
+      min-width: 150px;
+      padding: 11px 12px;
+      border-radius: 14px;
+      font-size: 0.92rem;
+    }#aby-admin-panel .empty {
+      padding: 24px;
+      color: var(--muted);
+      text-align: center;
+    }#aby-admin-panel .hidden {
+      display: none !important;
+    }#aby-admin-panel .meta {
+      color: var(--muted);
+      font-size: 0.88rem;
+      line-height: 1.5;
+    }#aby-admin-panel @media (max-width: 900px) {
+      .container {
+        width: min(100% - 16px, var(--max));
+        padding-top: 18px;
+      }
+
+      .admin-header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 20px;
+      }#aby-admin-panel .grid {
+        grid-template-columns: 1fr;
+      }#aby-admin-panel .login-card,
+    #aby-admin-panel .dashboard-card {
+        padding: 20px 16px;
+        border-radius: 24px;
+      }#aby-admin-panel .toolbar {
+        align-items: stretch;
+      }#aby-admin-panel .search {
+        width: 100%;
+      }
+    }
   </style>
 </head>
 
@@ -2058,6 +2299,85 @@
   </main>
 
 
+  <section id="aby-admin-panel" aria-label="Panel administrativo">
+    <div class="admin-top-note">
+      Estás viendo el panel privado de A Better You. Inicia sesión para revisar solicitudes.
+      <br>
+      <a class="admin-close-link" href="./">Volver a la página</a>
+    </div>
+
+    <main class="container">
+      <section class="admin-header">
+      <div>
+        <h1>Panel Admin</h1>
+        <p>Solicitudes de “Únete al equipo” para A Better You.</p>
+      </div>
+      <div class="pill">Temporada Verano</div>
+    </section>
+
+    <section class="grid">
+      <article class="login-card" id="loginCard">
+        <h2>Acceso privado</h2>
+        <p>Inicia sesión con el usuario administrador creado en Supabase.</p>
+
+        <form class="form" id="loginForm">
+          <label>
+            Email
+            <input id="adminEmail" type="email" required placeholder="admin@abetteryou.com">
+          </label>
+
+          <label>
+            Contraseña
+            <input id="adminPassword" type="password" required placeholder="••••••••">
+          </label>
+
+          <button type="submit">Entrar al panel</button>
+        </form>
+
+        <div id="loginMessage" class="message" role="status" aria-live="polite"></div>
+      </article>
+
+      <article class="dashboard-card hidden" id="dashboardCard">
+        <div class="toolbar">
+          <div>
+            <h2>Solicitudes recibidas</h2>
+            <p class="meta" id="adminIdentity"></p>
+          </div>
+          <div class="admin-actions">
+            <button class="ghost-button" id="refreshBtn" type="button">Actualizar</button>
+            <button class="ghost-button" id="logoutBtn" type="button">Cerrar sesión</button>
+          </div>
+        </div>
+
+        <div class="toolbar">
+          <input class="search" id="searchInput" type="search" placeholder="Buscar por nombre, pueblo, email o teléfono">
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Fecha</th>
+                <th>Nombre</th>
+                <th>Pueblo</th>
+                <th>Email</th>
+                <th>Teléfono</th>
+                <th>Estado</th>
+              </tr>
+            </thead>
+            <tbody id="applicationsBody"></tbody>
+          </table>
+          <div class="empty hidden" id="emptyState">No hay solicitudes todavía.</div>
+        </div>
+
+        <div id="dashboardMessage" class="message" role="status" aria-live="polite"></div>
+      </article>
+    </section>
+    </main>
+  </section>
+
+
+
   <section class="herbalife-footer-section container">
     <div class="herbalife-footer-card">
       <div class="herbalife-footer-copy">
@@ -2089,8 +2409,318 @@
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="assets/js/supabase-config.js"></script>
-  <script src="assets/js/site-applications.js"></script>
+
+  <script>
+// A Better You — Configuración de Supabase
+window.ABY_SUPABASE_URL = "https://tnipebyradbyqoaonhpa.supabase.co";
+window.ABY_SUPABASE_ANON_KEY = "sb_publishable_PCW9rqoKgvqy7A58lCRhcQ_oX93OeRO";
+
+  </script>
+
+  <script>
+(() => {
+  const form = document.getElementById("teamForm");
+  const messageBox = document.getElementById("teamFormMessage");
+
+  if (!form || !messageBox) return;
+
+  const url = window.ABY_SUPABASE_URL;
+  const anonKey = window.ABY_SUPABASE_ANON_KEY;
+
+  function showMessage(type, text) {
+    messageBox.className = `team-form-message show ${type}`;
+    messageBox.textContent = text;
+  }
+
+  function getClient() {
+    if (!url || !anonKey || url.includes("PEGA_AQUI") || anonKey.includes("PEGA_AQUI")) {
+      return null;
+    }
+    return window.supabase.createClient(url, anonKey);
+  }
+
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    const button = form.querySelector(".team-submit");
+    const supabaseClient = getClient();
+
+    if (!supabaseClient) {
+      showMessage("error", "Falta conectar Supabase. Completa assets/js/supabase-config.js con tu URL y tu anon key.");
+      return;
+    }
+
+    const application = {
+      full_name: document.getElementById("nombreCompleto").value.trim(),
+      town: document.getElementById("puebloResidencia").value.trim(),
+      email: document.getElementById("emailEquipo").value.trim(),
+      phone: document.getElementById("telefonoEquipo").value.trim(),
+      status: "new"
+    };
+
+    if (!application.full_name || !application.town || !application.email || !application.phone) {
+      showMessage("error", "Completa todos los campos antes de enviar.");
+      return;
+    }
+
+    button.disabled = true;
+    button.textContent = "Enviando...";
+
+    const { error } = await supabaseClient
+      .from("team_applications")
+      .insert([application]);
+
+    if (error) {
+      console.error(error);
+      showMessage("error", "No se pudo guardar la solicitud. Verifica la configuración de Supabase y vuelve a intentar.");
+      button.disabled = false;
+      button.textContent = "Enviar mi solicitud";
+      return;
+    }
+
+    showMessage("success", "¡Gracias! El equipo de A Better You se contactará contigo lo más pronto posible.");
+    form.reset();
+    button.disabled = false;
+    button.textContent = "Enviar mi solicitud";
+  });
+})();
+  </script>
+
+  <script>
+(() => {
+  const shouldOpenAdmin =
+    new URLSearchParams(window.location.search).get("admin") === "1" ||
+    window.location.hash === "#admin";
+
+  const adminPanel = document.getElementById("aby-admin-panel");
+  if (!shouldOpenAdmin || !adminPanel) return;
+
+  adminPanel.classList.add("active");
+  setTimeout(() => adminPanel.scrollIntoView({ behavior: "smooth", block: "start" }), 150);
+
+  const url = window.ABY_SUPABASE_URL;
+  const anonKey = window.ABY_SUPABASE_ANON_KEY;
+
+  const loginCard = document.getElementById("loginCard");
+  const dashboardCard = document.getElementById("dashboardCard");
+  const loginForm = document.getElementById("loginForm");
+  const loginMessage = document.getElementById("loginMessage");
+  const dashboardMessage = document.getElementById("dashboardMessage");
+  const adminIdentity = document.getElementById("adminIdentity");
+  const applicationsBody = document.getElementById("applicationsBody");
+  const emptyState = document.getElementById("emptyState");
+  const searchInput = document.getElementById("searchInput");
+  const refreshBtn = document.getElementById("refreshBtn");
+  const logoutBtn = document.getElementById("logoutBtn");
+
+  let supabaseClient;
+  let applications = [];
+
+  function showMessage(node, type, text) {
+    node.className = `message show ${type}`;
+    node.textContent = text;
+  }
+
+  function clearMessage(node) {
+    node.className = "message";
+    node.textContent = "";
+  }
+
+  function configured() {
+    return url && anonKey && !url.includes("PEGA_AQUI") && !anonKey.includes("PEGA_AQUI");
+  }
+
+  function escapeHtml(value) {
+    return String(value ?? "")
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;")
+      .replaceAll("'", "&#039;");
+  }
+
+  function formatDate(value) {
+    if (!value) return "—";
+    return new Intl.DateTimeFormat("es-PR", {
+      dateStyle: "medium",
+      timeStyle: "short"
+    }).format(new Date(value));
+  }
+
+  function renderRows(items) {
+    applicationsBody.innerHTML = "";
+    emptyState.classList.toggle("hidden", items.length !== 0);
+
+    for (const item of items) {
+      const tr = document.createElement("tr");
+      tr.innerHTML = `
+        <td>${escapeHtml(formatDate(item.created_at))}</td>
+        <td>${escapeHtml(item.full_name)}</td>
+        <td>${escapeHtml(item.town)}</td>
+        <td>${escapeHtml(item.email)}</td>
+        <td>${escapeHtml(item.phone)}</td>
+        <td>
+          <select class="status-select" data-id="${escapeHtml(item.id)}">
+            <option value="new" ${item.status === "new" ? "selected" : ""}>Nueva</option>
+            <option value="contacted" ${item.status === "contacted" ? "selected" : ""}>Contactada</option>
+            <option value="approved" ${item.status === "approved" ? "selected" : ""}>Aprobada</option>
+            <option value="closed" ${item.status === "closed" ? "selected" : ""}>Cerrada</option>
+          </select>
+        </td>
+      `;
+      applicationsBody.appendChild(tr);
+    }
+  }
+
+  function applySearch() {
+    const q = searchInput.value.trim().toLowerCase();
+    if (!q) {
+      renderRows(applications);
+      return;
+    }
+
+    const filtered = applications.filter((item) => {
+      return [
+        item.full_name,
+        item.town,
+        item.email,
+        item.phone,
+        item.status
+      ].some((value) => String(value ?? "").toLowerCase().includes(q));
+    });
+
+    renderRows(filtered);
+  }
+
+  async function verifyAdmin(user) {
+    const { data, error } = await supabaseClient
+      .from("admin_users")
+      .select("user_id,email")
+      .eq("user_id", user.id)
+      .maybeSingle();
+
+    if (error) {
+      console.error(error);
+      return false;
+    }
+    return Boolean(data);
+  }
+
+  async function loadApplications() {
+    clearMessage(dashboardMessage);
+    const { data, error } = await supabaseClient
+      .from("team_applications")
+      .select("id, created_at, full_name, town, email, phone, status")
+      .order("created_at", { ascending: false });
+
+    if (error) {
+      console.error(error);
+      showMessage(dashboardMessage, "error", "No se pudieron cargar las solicitudes. Revisa las políticas de Supabase.");
+      return;
+    }
+
+    applications = data ?? [];
+    applySearch();
+  }
+
+  async function showDashboard(session) {
+    const user = session.user;
+    const isAdmin = await verifyAdmin(user);
+
+    if (!isAdmin) {
+      showMessage(loginMessage, "error", "Este usuario inició sesión, pero no tiene permiso de administrador.");
+      await supabaseClient.auth.signOut();
+      return;
+    }
+
+    loginCard.classList.add("hidden");
+    dashboardCard.classList.remove("hidden");
+    adminIdentity.textContent = `Sesión activa: ${user.email}`;
+    await loadApplications();
+  }
+
+  async function init() {
+    if (!configured()) {
+      showMessage(loginMessage, "error", "Falta configurar Supabase en assets/js/supabase-config.js.");
+      return;
+    }
+
+    supabaseClient = window.supabase.createClient(url, anonKey);
+
+    const { data } = await supabaseClient.auth.getSession();
+    if (data.session) {
+      await showDashboard(data.session);
+    }
+  }
+
+  loginForm?.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    clearMessage(loginMessage);
+
+    if (!configured()) {
+      showMessage(loginMessage, "error", "Falta configurar Supabase en assets/js/supabase-config.js.");
+      return;
+    }
+
+    supabaseClient = supabaseClient ?? window.supabase.createClient(url, anonKey);
+
+    const email = document.getElementById("adminEmail").value.trim();
+    const password = document.getElementById("adminPassword").value;
+
+    const { data, error } = await supabaseClient.auth.signInWithPassword({
+      email,
+      password
+    });
+
+    if (error) {
+      console.error(error);
+      showMessage(loginMessage, "error", "No se pudo iniciar sesión. Verifica el email y la contraseña.");
+      return;
+    }
+
+    await showDashboard(data.session);
+  });
+
+  refreshBtn?.addEventListener("click", loadApplications);
+  searchInput?.addEventListener("input", applySearch);
+
+  logoutBtn?.addEventListener("click", async () => {
+    await supabaseClient.auth.signOut();
+    dashboardCard.classList.add("hidden");
+    loginCard.classList.remove("hidden");
+    adminIdentity.textContent = "";
+    applications = [];
+    applicationsBody.innerHTML = "";
+    showMessage(loginMessage, "success", "Sesión cerrada.");
+  });
+
+  applicationsBody?.addEventListener("change", async (event) => {
+    const select = event.target.closest(".status-select");
+    if (!select) return;
+
+    const id = select.dataset.id;
+    const status = select.value;
+
+    const { error } = await supabaseClient
+      .from("team_applications")
+      .update({ status })
+      .eq("id", id);
+
+    if (error) {
+      console.error(error);
+      showMessage(dashboardMessage, "error", "No se pudo actualizar el estado.");
+      return;
+    }
+
+    const item = applications.find((application) => application.id === id);
+    if (item) item.status = status;
+    showMessage(dashboardMessage, "success", "Estado actualizado.");
+  });
+
+  init();
+
+})();
+  </script>
 
 </body>
 </html>
