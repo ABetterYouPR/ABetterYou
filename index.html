@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="A Better You - Una experiencia moderna, elegante y enfocada en ayudarte a lograr una mejor versión de ti." />
+  <title>A Better You | Inicio</title>
+
+  <style>
+    :root {
+      --bg: #050505;
+      --card: rgba(255, 255, 255, 0.06);
+      --card-strong: rgba(255, 255, 255, 0.09);
+      --border: rgba(255, 255, 255, 0.12);
+      --text: #f5f5f5;
+      --muted: rgba(255, 255, 255, 0.68);
+      --radius-lg: 28px;
+      --radius-md: 20px;
+      --radius-sm: 14px;
+      --max-width: 1180px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Inter, "Segoe UI", Arial, sans-serif;
+      background:
+        radial-gradient(circle at 15% 15%, rgba(255, 73, 73, 0.10), transparent 23%),
+        radial-gradient(circle at 85% 20%, rgba(0, 182, 255, 0.10), transparent 25%),
+        radial-gradient(circle at 50% 90%, rgba(85, 255, 129, 0.08), transparent 28%),
+        var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page-glow {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(120deg, rgba(255,255,255,0.03), transparent 40%),
+        radial-gradient(circle at center, transparent 45%, rgba(0,0,0,0.55) 100%);
+      z-index: 0;
+    }
+
+    .container {
+      width: min(100% - 40px, var(--max-width));
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .navbar {
+      position: sticky;
+      top: 18px;
+      z-index: 20;
+      margin-top: 18px;
+    }
+
+    .nav-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+      padding: 14px 18px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: rgba(9, 9, 9, 0.72);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 24px 70px rgba(0,0,0,0.35);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: max-content;
+    }
+
+    .brand-logo {
+      width: 46px;
+      height: 46px;
+      object-fit: contain;
+      border-radius: 50%;
+      filter: drop-shadow(0 0 14px rgba(255,255,255,0.18));
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.05;
+    }
+
+    .brand-text strong {
+      font-size: 0.98rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .brand-text span {
+      font-size: 0.72rem;
+      color: var(--muted);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .nav-links a {
+      transition: 0.25s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .nav-btn,
+    .primary-btn,
+    .secondary-btn {
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      font-weight: 700;
+      transition: 0.28s ease;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .nav-btn {
+      padding: 13px 18px;
+      background: #fff;
+      color: #050505;
+      border-color: rgba(255,255,255,0.75);
+      white-space: nowrap;
+    }
+
+    .nav-btn:hover,
+    .primary-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 40px rgba(255,255,255,0.18);
+    }
+
+    .hero {
+      min-height: calc(100vh - 100px);
+      display: grid;
+      grid-template-columns: 1.03fr 0.97fr;
+      align-items: center;
+      gap: 54px;
+      padding: 82px 0 90px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: var(--card);
+      color: rgba(255,255,255,0.84);
+      font-size: 0.88rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 22px;
+    }
+
+    .eyebrow-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #fff;
+      box-shadow: 0 0 16px rgba(255,255,255,0.9);
+    }
+
+    h1 {
+      font-size: clamp(3.25rem, 7vw, 6.9rem);
+      line-height: 0.92;
+      letter-spacing: -0.07em;
+      margin-bottom: 24px;
+      text-wrap: balance;
+    }
+
+    .gradient-text {
+      background: linear-gradient(90deg, #ffffff 0%, rgba(255,255,255,0.78) 48%, #ffffff 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-copy p {
+      max-width: 650px;
+      color: var(--muted);
+      font-size: 1.16rem;
+      line-height: 1.8;
+      margin-bottom: 34px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 38px;
+    }
+
+    .primary-btn {
+      padding: 17px 24px;
+      background: #ffffff;
+      color: #050505;
+      border-color: rgba(255,255,255,0.72);
+      font-size: 1rem;
+    }
+
+    .secondary-btn {
+      padding: 17px 24px;
+      background: var(--card);
+      color: var(--text);
+      font-size: 1rem;
+    }
+
+    .secondary-btn:hover {
+      transform: translateY(-2px);
+      background: rgba(255,255,255,0.10);
+    }
+
+    .mini-stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      max-width: 720px;
+    }
+
+    .stat {
+      border: 1px solid var(--border);
+      background: var(--card);
+      border-radius: var(--radius-sm);
+      padding: 18px;
+      backdrop-filter: blur(12px);
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.4rem;
+      margin-bottom: 5px;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 0.88rem;
+      line-height: 1.45;
+    }
+
+    .hero-visual {
+      position: relative;
+      min-height: 650px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .logo-stage {
+      position: relative;
+      width: min(100%, 600px);
+      aspect-ratio: 1 / 1;
+      display: grid;
+      place-items: center;
+    }
+
+    .ring {
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.12);
+      animation: spin 18s linear infinite;
+    }
+
+    .ring.one {
+      width: 100%;
+      height: 100%;
+      border-top-color: rgba(255,255,255,0.62);
+      border-left-color: rgba(255,255,255,0.25);
+    }
+
+    .ring.two {
+      width: 82%;
+      height: 82%;
+      animation-direction: reverse;
+      animation-duration: 13s;
+      border-bottom-color: rgba(255,255,255,0.5);
+    }
+
+    .ring.three {
+      width: 62%;
+      height: 62%;
+      animation-duration: 10s;
+      border-right-color: rgba(255,255,255,0.42);
+    }
+
+    .logo-card {
+      width: min(84%, 510px);
+      aspect-ratio: 1 / 1;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at center, rgba(255,255,255,0.08), rgba(255,255,255,0.02) 58%, transparent 73%);
+      border: 1px solid rgba(255,255,255,0.11);
+      display: grid;
+      place-items: center;
+      box-shadow:
+        inset 0 0 80px rgba(255,255,255,0.04),
+        0 40px 120px rgba(0,0,0,0.45);
+      backdrop-filter: blur(18px);
+      animation: float 5s ease-in-out infinite;
+    }
+
+    .main-logo {
+      width: 94%;
+      max-width: 495px;
+      height: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 18px 36px rgba(0,0,0,0.55));
+    }
+
+    .floating-card {
+      position: absolute;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.07);
+      backdrop-filter: blur(16px);
+      border-radius: 20px;
+      padding: 16px 18px;
+      max-width: 230px;
+      box-shadow: 0 22px 70px rgba(0,0,0,0.35);
+    }
+
+    .floating-card strong {
+      display: block;
+      font-size: 1rem;
+      margin-bottom: 5px;
+    }
+
+    .floating-card span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.89rem;
+      line-height: 1.5;
+    }
+
+    .floating-card.top {
+      top: 72px;
+      left: 0;
+    }
+
+    .floating-card.bottom {
+      bottom: 82px;
+      right: 0;
+    }
+
+    .section {
+      padding: 42px 0 104px;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 30px;
+      margin-bottom: 28px;
+    }
+
+    .section-head h2 {
+      font-size: clamp(2rem, 4vw, 3.6rem);
+      line-height: 1;
+      letter-spacing: -0.05em;
+      max-width: 760px;
+    }
+
+    .section-head p {
+      max-width: 420px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .feature-card {
+      min-height: 250px;
+      padding: 26px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      border-radius: var(--radius-md);
+      transition: 0.28s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .feature-card::before {
+      content: "";
+      position: absolute;
+      inset: auto -60px -60px auto;
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.07);
+      filter: blur(10px);
+    }
+
+    .feature-card:hover {
+      transform: translateY(-6px);
+      background: var(--card-strong);
+      border-color: rgba(255,255,255,0.22);
+    }
+
+    .feature-number {
+      display: inline-flex;
+      width: 42px;
+      height: 42px;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      margin-bottom: 24px;
+      color: rgba(255,255,255,0.92);
+      font-weight: 800;
+    }
+
+    .feature-card h3 {
+      font-size: 1.28rem;
+      margin-bottom: 12px;
+    }
+
+    .feature-card p {
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 18px;
+    }
+
+    .panel {
+      border: 1px solid var(--border);
+      background: var(--card);
+      border-radius: var(--radius-lg);
+      padding: 34px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .panel h3 {
+      font-size: 2rem;
+      letter-spacing: -0.04em;
+      margin-bottom: 16px;
+    }
+
+    .panel p {
+      color: var(--muted);
+      line-height: 1.85;
+      margin-bottom: 18px;
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .tag {
+      padding: 11px 14px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.05);
+      color: rgba(255,255,255,0.84);
+      font-size: 0.92rem;
+    }
+
+    .steps {
+      display: grid;
+      gap: 14px;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: 54px 1fr;
+      gap: 16px;
+      padding: 18px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .step-index {
+      width: 54px;
+      height: 54px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      background: #fff;
+      color: #050505;
+    }
+
+    .step h4 {
+      font-size: 1.1rem;
+      margin-bottom: 6px;
+    }
+
+    .step p {
+      margin: 0;
+      font-size: 0.98rem;
+    }
+
+    .cta {
+      padding-bottom: 110px;
+    }
+
+    .cta-card {
+      border-radius: 34px;
+      border: 1px solid rgba(255,255,255,0.16);
+      background:
+        radial-gradient(circle at top left, rgba(255,255,255,0.14), transparent 35%),
+        rgba(255,255,255,0.07);
+      padding: clamp(30px, 5vw, 58px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 30px;
+      box-shadow: 0 32px 120px rgba(0,0,0,0.38);
+    }
+
+    .cta-card h2 {
+      font-size: clamp(2.2rem, 4vw, 4rem);
+      line-height: 1;
+      letter-spacing: -0.055em;
+      margin-bottom: 16px;
+    }
+
+    .cta-card p {
+      color: var(--muted);
+      max-width: 650px;
+      line-height: 1.8;
+    }
+
+    footer {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding: 30px 0 44px;
+      color: var(--muted);
+    }
+
+    .footer-wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .footer-brand img {
+      width: 42px;
+      height: 42px;
+      object-fit: contain;
+    }
+
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+
+    @media (max-width: 1020px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        padding-top: 72px;
+        gap: 42px;
+      }
+
+      .hero-visual {
+        min-height: 560px;
+      }
+
+      .section-head,
+      .cta-card {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .feature-grid,
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .container {
+        width: min(100% - 24px, var(--max-width));
+      }
+
+      .navbar {
+        top: 10px;
+        margin-top: 10px;
+      }
+
+      .nav-wrap {
+        padding: 12px;
+        border-radius: 24px;
+      }
+
+      .brand-text strong {
+        font-size: 0.85rem;
+      }
+
+      .brand-text span {
+        display: none;
+      }
+
+      .nav-btn {
+        padding: 12px 14px;
+        font-size: 0.9rem;
+      }
+
+      .hero {
+        padding: 52px 0 70px;
+      }
+
+      .hero-copy p {
+        font-size: 1rem;
+      }
+
+      .mini-stats {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-visual {
+        min-height: 430px;
+      }
+
+      .floating-card {
+        position: static;
+        max-width: 100%;
+      }
+
+      .logo-stage {
+        gap: 14px;
+        display: flex;
+        flex-direction: column;
+        aspect-ratio: auto;
+      }
+
+      .ring {
+        display: none;
+      }
+
+      .logo-card {
+        width: 100%;
+      }
+
+      .section {
+        padding-bottom: 78px;
+      }
+
+      .panel {
+        padding: 24px;
+      }
+
+      .step {
+        grid-template-columns: 1fr;
+      }
+
+      .cta-card {
+        border-radius: 26px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page-glow"></div>
+
+  <header class="navbar container">
+    <nav class="nav-wrap">
+      <a href="#inicio" class="brand">
+        <img src="assets/img/logo.png" alt="Logo A Better You" class="brand-logo">
+        <span class="brand-text">
+          <strong>A Better You</strong>
+          <span>Premium Brand</span>
+        </span>
+      </a>
+
+      <div class="nav-links">
+        <a href="#inicio">Inicio</a>
+        <a href="#propuesta">Propuesta</a>
+        <a href="#nosotros">Nosotros</a>
+        <a href="#contacto">Contacto</a>
+      </div>
+
+      <a class="nav-btn" href="#contacto">Comenzar</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero container" id="inicio">
+      <div class="hero-copy">
+        <div class="eyebrow">
+          <span class="eyebrow-dot"></span>
+          Nueva base web para la marca
+        </div>
+
+        <h1>
+          Diseñando una
+          <span class="gradient-text">mejor versión</span>
+          de ti.
+        </h1>
+
+        <p>
+          Esta es la página inicial de <strong>A Better You</strong>, creada con una estética
+          elegante, moderna y premium. La estructura ya está lista para adaptar textos,
+          servicios, fotos, testimonios, precios o reservas según el enfoque exacto del negocio.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#propuesta" class="primary-btn">Ver la propuesta</a>
+          <a href="#contacto" class="secondary-btn">Editar contacto</a>
+        </div>
+
+        <div class="mini-stats">
+          <div class="stat">
+            <strong>01</strong>
+            <span>Diseño oscuro y sofisticado inspirado en el logo.</span>
+          </div>
+          <div class="stat">
+            <strong>02</strong>
+            <span>Responsive para celular, tablet y computadora.</span>
+          </div>
+          <div class="stat">
+            <strong>03</strong>
+            <span>Base preparada para convertir en sitio final.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="logo-stage">
+          <div class="ring one"></div>
+          <div class="ring two"></div>
+          <div class="ring three"></div>
+
+          <div class="floating-card top">
+            <strong>Identidad elegante</strong>
+            <span>Minimalismo, presencia y una primera impresión premium.</span>
+          </div>
+
+          <div class="logo-card">
+            <img src="assets/img/logo.png" alt="A Better You" class="main-logo">
+          </div>
+
+          <div class="floating-card bottom">
+            <strong>Lista para crecer</strong>
+            <span>Secciones fáciles de reemplazar con el contenido real del negocio.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section container" id="propuesta">
+      <div class="section-head">
+        <h2>Una portada fuerte para comenzar la web.</h2>
+        <p>
+          Dejé una base que funciona muy bien para marcas de bienestar, estética,
+          coaching, fitness, servicios personales o negocios premium.
+        </p>
+      </div>
+
+      <div class="feature-grid">
+        <article class="feature-card">
+          <div class="feature-number">01</div>
+          <h3>Mensaje principal</h3>
+          <p>
+            Un hero section poderoso con llamado a la acción y espacio para explicar
+            claramente lo que ofrece A Better You.
+          </p>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-number">02</div>
+          <h3>Secciones editables</h3>
+          <p>
+            Incluye áreas para servicios, proceso, historia de la marca y contacto,
+            listas para personalizar sin rehacer el diseño.
+          </p>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-number">03</div>
+          <h3>Estilo premium</h3>
+          <p>
+            Fondo oscuro, efecto glass, bordes suaves y movimiento visual sutil
+            para una presencia moderna y profesional.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section container" id="nosotros">
+      <div class="about-grid">
+        <article class="panel">
+          <h3>A Better You</h3>
+          <p>
+            Este espacio queda preparado para colocar la historia del negocio,
+            su misión, su visión y por qué las personas deberían elegir la marca.
+          </p>
+          <p>
+            Cuando tengamos el contenido final, esta base se puede transformar
+            en una página totalmente personalizada y más persuasiva.
+          </p>
+
+          <div class="tag-list">
+            <span class="tag">Marca</span>
+            <span class="tag">Transformación</span>
+            <span class="tag">Confianza</span>
+            <span class="tag">Experiencia premium</span>
+          </div>
+        </article>
+
+        <article class="panel">
+          <h3>Flujo recomendado</h3>
+          <div class="steps">
+            <div class="step">
+              <div class="step-index">1</div>
+              <div>
+                <h4>Presentar la promesa</h4>
+                <p>Explicar de forma directa qué cambio o beneficio recibe el cliente.</p>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="step-index">2</div>
+              <div>
+                <h4>Mostrar servicios</h4>
+                <p>Agregar paquetes, sesiones, tratamientos, planes o productos.</p>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="step-index">3</div>
+              <div>
+                <h4>Convertir visitas</h4>
+                <p>Conectar WhatsApp, formulario, calendario de citas o redes sociales.</p>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="cta container" id="contacto">
+      <div class="cta-card">
+        <div>
+          <h2>Base inicial terminada.</h2>
+          <p>
+            Esta estructura ya funciona como página principal. Luego podemos agregar
+            los servicios reales, fotos, botón de WhatsApp, Instagram, precios y reservas.
+          </p>
+        </div>
+
+        <a href="#" class="primary-btn">A Better You</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-wrap">
+      <div class="footer-brand">
+        <img src="assets/img/logo.png" alt="Logo A Better You">
+        <div>
+          <strong style="display:block; color:#fff;">A Better You</strong>
+          <span>© 2026. Base web inicial.</span>
+        </div>
+      </div>
+      <span>Diseño listo para seguir desarrollando.</span>
+    </div>
+  </footer>
+</body>
+</html>
