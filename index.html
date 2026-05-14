@@ -1856,6 +1856,34 @@
         width: 100%;
       }
     }
+
+    .admin-mini-access {
+      margin-top: 12px;
+      text-align: center;
+    }
+
+    .admin-mini-access a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.04);
+      color: rgba(255,255,255,0.58);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: 0.25s ease;
+    }
+
+    .admin-mini-access a:hover {
+      color: #fff;
+      background: rgba(255,255,255,0.10);
+      border-color: rgba(255,255,255,0.22);
+    }
+
   </style>
 </head>
 
@@ -2406,6 +2434,11 @@
       </div>
       <span>Diseño listo para seguir desarrollando.</span>
     </div>
+  
+      <div class="admin-mini-access">
+        <a href="#admin" id="openAdminPanelLink">Admin Panel</a>
+      </div>
+
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -2488,15 +2521,33 @@ window.ABY_SUPABASE_ANON_KEY = "sb_publishable_PCW9rqoKgvqy7A58lCRhcQ_oX93OeRO";
 
   <script>
 (() => {
+  const adminPanel = document.getElementById("aby-admin-panel");
+  const adminLink = document.getElementById("openAdminPanelLink");
+
+  function openAdminPanel() {
+    if (!adminPanel) return false;
+    adminPanel.classList.add("active");
+    setTimeout(() => adminPanel.scrollIntoView({ behavior: "smooth", block: "start" }), 120);
+    return true;
+  }
+
   const shouldOpenAdmin =
     new URLSearchParams(window.location.search).get("admin") === "1" ||
     window.location.hash === "#admin";
 
-  const adminPanel = document.getElementById("aby-admin-panel");
-  if (!shouldOpenAdmin || !adminPanel) return;
+  if (shouldOpenAdmin) {
+    openAdminPanel();
+  }
 
-  adminPanel.classList.add("active");
-  setTimeout(() => adminPanel.scrollIntoView({ behavior: "smooth", block: "start" }), 150);
+  if (adminLink) {
+    adminLink.addEventListener("click", function (event) {
+      event.preventDefault();
+      history.replaceState(null, "", "#admin");
+      openAdminPanel();
+    });
+  }
+
+  if (!adminPanel || !adminPanel.classList.contains("active")) return;
 
   const url = window.ABY_SUPABASE_URL;
   const anonKey = window.ABY_SUPABASE_ANON_KEY;
