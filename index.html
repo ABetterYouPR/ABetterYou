@@ -158,9 +158,11 @@
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 24px;
+      gap: 14px;
       color: var(--muted);
-      font-size: 0.95rem;
+      font-size: 0.92rem;
+      flex-wrap: wrap;
+      justify-content: center;
     }
 
     .nav-links a {
@@ -765,6 +767,200 @@
       transform: translateY(-2px);
     }
 
+
+    .team-section {
+      padding: 34px 0 104px;
+    }
+
+    .team-card {
+      display: grid;
+      grid-template-columns: 0.92fr 1.08fr;
+      gap: 22px;
+      align-items: stretch;
+      border-radius: 34px;
+      border: 1px solid rgba(255,255,255,0.14);
+      background:
+        radial-gradient(circle at top left, rgba(255,255,255,0.11), transparent 34%),
+        rgba(255,255,255,0.06);
+      box-shadow: 0 32px 110px rgba(0,0,0,0.36);
+      padding: clamp(22px, 4vw, 42px);
+      overflow: hidden;
+    }
+
+    .team-copy {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: clamp(6px, 1vw, 10px);
+    }
+
+    .team-copy h2 {
+      font-size: clamp(2.15rem, 4vw, 4rem);
+      line-height: 1;
+      letter-spacing: -0.055em;
+      margin-bottom: 18px;
+    }
+
+    .team-copy p {
+      color: var(--muted);
+      line-height: 1.85;
+      font-size: 1.08rem;
+      max-width: 560px;
+      margin-bottom: 0;
+    }
+
+    .team-form-shell {
+      position: relative;
+      border-radius: 30px;
+      border: 1px solid rgba(255,255,255,0.14);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.05));
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.08),
+        0 24px 80px rgba(0,0,0,0.28);
+      padding: clamp(18px, 3vw, 30px);
+      backdrop-filter: blur(18px);
+      overflow: hidden;
+    }
+
+    .team-form-shell::before {
+      content: "";
+      position: absolute;
+      inset: auto -90px -90px auto;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.05);
+      filter: blur(4px);
+      pointer-events: none;
+    }
+
+    .team-form {
+      position: relative;
+      display: grid;
+      gap: 18px;
+      z-index: 1;
+    }
+
+    .team-form-head {
+      display: grid;
+      gap: 8px;
+      padding-bottom: 4px;
+    }
+
+    .team-form-head h3 {
+      font-size: 1.55rem;
+      letter-spacing: -0.04em;
+      line-height: 1.05;
+    }
+
+    .team-form-head p {
+      color: rgba(255,255,255,0.64);
+      line-height: 1.65;
+      font-size: 0.98rem;
+      max-width: 520px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .form-row {
+      display: grid;
+      gap: 8px;
+    }
+
+    .form-row.full {
+      grid-column: 1 / -1;
+    }
+
+    .form-row label {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.88);
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      padding-left: 2px;
+    }
+
+    .form-row input,
+    .form-row select {
+      width: 100%;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.16);
+      background: rgba(255,255,255,0.07);
+      color: #fff;
+      padding: 16px 16px;
+      outline: none;
+      font-size: 1rem;
+      transition: 0.25s ease;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+
+    .form-row select {
+      cursor: pointer;
+      background-image:
+        linear-gradient(45deg, transparent 50%, rgba(255,255,255,0.68) 50%),
+        linear-gradient(135deg, rgba(255,255,255,0.68) 50%, transparent 50%);
+      background-position:
+        calc(100% - 20px) 52%,
+        calc(100% - 14px) 52%;
+      background-size: 6px 6px, 6px 6px;
+      background-repeat: no-repeat;
+      padding-right: 44px;
+    }
+
+    .form-row select option {
+      color: #111;
+    }
+
+    .form-row input::placeholder {
+      color: rgba(255,255,255,0.42);
+    }
+
+    .form-row input:focus,
+    .form-row select:focus {
+      border-color: rgba(255,255,255,0.42);
+      background-color: rgba(255,255,255,0.11);
+      box-shadow: 0 0 0 4px rgba(255,255,255,0.06);
+      transform: translateY(-1px);
+    }
+
+    .team-submit {
+      margin-top: 2px;
+      width: 100%;
+      border: 1px solid rgba(255,255,255,0.74);
+      border-radius: 999px;
+      padding: 17px 22px;
+      background: #fff;
+      color: #050505;
+      font-size: 1rem;
+      font-weight: 900;
+      cursor: pointer;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, opacity 0.25s ease;
+    }
+
+    .team-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 40px rgba(255,255,255,0.18);
+    }
+
+    .form-note {
+      color: rgba(255,255,255,0.62);
+      font-size: 0.88rem;
+      line-height: 1.55;
+      text-align: center;
+      margin-top: -2px;
+    }
+
+    @media (max-width: 1020px) {
+      .team-card {
+        grid-template-columns: 1fr;
+      }
+    }
+
     @media (max-width: 1020px) {
       .left-brand-mark {
         display: none;
@@ -1060,6 +1256,9 @@
       }
 
 
+      
+      
+      
       .team-section {
         padding: 18px 0 70px;
       }
@@ -1067,13 +1266,17 @@
       .team-card {
         grid-template-columns: 1fr;
         gap: 18px;
-        padding: 24px 18px;
+        padding: 22px 18px;
         border-radius: 28px;
         text-align: center;
       }
 
+      .team-copy {
+        padding: 0;
+      }
+
       .team-copy h2 {
-        font-size: 2.25rem;
+        font-size: 2.2rem;
         margin-bottom: 14px;
       }
 
@@ -1082,10 +1285,22 @@
         line-height: 1.75;
       }
 
-      .team-form {
+      .team-form-shell {
         padding: 18px;
         border-radius: 24px;
         text-align: left;
+      }
+
+      .team-form-head h3 {
+        font-size: 1.35rem;
+      }
+
+      .team-form-head p {
+        font-size: 0.95rem;
+      }
+
+      .form-grid {
+        grid-template-columns: 1fr;
       }
 
       .form-row input,
@@ -1097,6 +1312,9 @@
       .team-submit {
         padding: 16px 18px;
       }
+
+
+
 
       .footer-wrap {
         flex-direction: column;
@@ -1133,13 +1351,14 @@
         <a href="#inicio">Inicio</a>
         <a href="#nosotros">Nosotros</a>
         <a href="#mega-te">Mega Té</a>
-        <a href="#unete-equipo">Únete a nuestro equipo</a>
+        <a href="#unete-equipo">Únete al equipo</a>
         <a href="#contacto">Contacto</a>
       </div>
 </nav>
   </header>
 
   <main>
+    
     
     <section class="hero container" id="inicio">
       <div class="hero-copy">
@@ -1178,6 +1397,7 @@
         </div>
       </div>
     </section>
+
 
 
     <section class="section container" id="nosotros">
@@ -1386,129 +1606,142 @@
 
     
 
+    
+    
+    
     <section class="team-section container" id="unete-equipo">
       <div class="team-card">
         <div class="team-copy">
           <div class="eyebrow">
             <span class="eyebrow-dot"></span>
-            Únete a nuestro equipo
+            Únete al equipo
           </div>
 
-          <h2>Crece con A Better You</h2>
+          <h2>Haz crecer tu potencial</h2>
           <p>
             ¿Te gustaría transformar tu estilo de vida y, de paso, generar ingresos extra?
             Únete a nuestro equipo y descubre cómo hacer crecer tu potencial con nosotros.
           </p>
         </div>
 
-        <form class="team-form" id="teamForm">
-          <div class="form-row">
-            <label for="nombreCompleto">Nombre completo</label>
-            <input id="nombreCompleto" name="nombreCompleto" type="text" placeholder="Escribe tu nombre completo" required>
-          </div>
+        <div class="team-form-shell">
+          <form class="team-form" id="teamForm">
+            <div class="team-form-head">
+              <h3>Queremos conocerte</h3>
+              <p>Completa tus datos y se abrirá WhatsApp con tu solicitud lista para enviar.</p>
+            </div>
 
-          <div class="form-row">
-            <label for="puebloResidencia">Pueblo de residencia</label>
-            <select id="puebloResidencia" name="puebloResidencia" required>
-              <option value="" selected disabled>Selecciona tu pueblo</option>
-              <option value="Adjuntas">Adjuntas</option>
-              <option value="Aguada">Aguada</option>
-              <option value="Aguadilla">Aguadilla</option>
-              <option value="Aguas Buenas">Aguas Buenas</option>
-              <option value="Aibonito">Aibonito</option>
-              <option value="Añasco">Añasco</option>
-              <option value="Arecibo">Arecibo</option>
-              <option value="Arroyo">Arroyo</option>
-              <option value="Barceloneta">Barceloneta</option>
-              <option value="Barranquitas">Barranquitas</option>
-              <option value="Bayamón">Bayamón</option>
-              <option value="Cabo Rojo">Cabo Rojo</option>
-              <option value="Caguas">Caguas</option>
-              <option value="Camuy">Camuy</option>
-              <option value="Canóvanas">Canóvanas</option>
-              <option value="Carolina">Carolina</option>
-              <option value="Cataño">Cataño</option>
-              <option value="Cayey">Cayey</option>
-              <option value="Ceiba">Ceiba</option>
-              <option value="Ciales">Ciales</option>
-              <option value="Cidra">Cidra</option>
-              <option value="Coamo">Coamo</option>
-              <option value="Comerío">Comerío</option>
-              <option value="Corozal">Corozal</option>
-              <option value="Culebra">Culebra</option>
-              <option value="Dorado">Dorado</option>
-              <option value="Fajardo">Fajardo</option>
-              <option value="Florida">Florida</option>
-              <option value="Guánica">Guánica</option>
-              <option value="Guayama">Guayama</option>
-              <option value="Guayanilla">Guayanilla</option>
-              <option value="Guaynabo">Guaynabo</option>
-              <option value="Gurabo">Gurabo</option>
-              <option value="Hatillo">Hatillo</option>
-              <option value="Hormigueros">Hormigueros</option>
-              <option value="Humacao">Humacao</option>
-              <option value="Isabela">Isabela</option>
-              <option value="Jayuya">Jayuya</option>
-              <option value="Juana Díaz">Juana Díaz</option>
-              <option value="Juncos">Juncos</option>
-              <option value="Lajas">Lajas</option>
-              <option value="Lares">Lares</option>
-              <option value="Las Marías">Las Marías</option>
-              <option value="Las Piedras">Las Piedras</option>
-              <option value="Loíza">Loíza</option>
-              <option value="Luquillo">Luquillo</option>
-              <option value="Manatí">Manatí</option>
-              <option value="Maricao">Maricao</option>
-              <option value="Maunabo">Maunabo</option>
-              <option value="Mayagüez">Mayagüez</option>
-              <option value="Moca">Moca</option>
-              <option value="Morovis">Morovis</option>
-              <option value="Naguabo">Naguabo</option>
-              <option value="Naranjito">Naranjito</option>
-              <option value="Orocovis">Orocovis</option>
-              <option value="Patillas">Patillas</option>
-              <option value="Peñuelas">Peñuelas</option>
-              <option value="Ponce">Ponce</option>
-              <option value="Quebradillas">Quebradillas</option>
-              <option value="Rincón">Rincón</option>
-              <option value="Río Grande">Río Grande</option>
-              <option value="Sabana Grande">Sabana Grande</option>
-              <option value="Salinas">Salinas</option>
-              <option value="San Germán">San Germán</option>
-              <option value="San Juan">San Juan</option>
-              <option value="San Lorenzo">San Lorenzo</option>
-              <option value="San Sebastián">San Sebastián</option>
-              <option value="Santa Isabel">Santa Isabel</option>
-              <option value="Toa Alta">Toa Alta</option>
-              <option value="Toa Baja">Toa Baja</option>
-              <option value="Trujillo Alto">Trujillo Alto</option>
-              <option value="Utuado">Utuado</option>
-              <option value="Vega Alta">Vega Alta</option>
-              <option value="Vega Baja">Vega Baja</option>
-              <option value="Vieques">Vieques</option>
-              <option value="Villalba">Villalba</option>
-              <option value="Yabucoa">Yabucoa</option>
-              <option value="Yauco">Yauco</option>
-            </select>
-          </div>
+            <div class="form-grid">
+              <div class="form-row full">
+                <label for="nombreCompleto">Nombre completo</label>
+                <input id="nombreCompleto" name="nombreCompleto" type="text" placeholder="Escribe tu nombre completo" required>
+              </div>
 
-          <div class="form-row">
-            <label for="emailEquipo">Email</label>
-            <input id="emailEquipo" name="emailEquipo" type="email" placeholder="correo@ejemplo.com" required>
-          </div>
+              <div class="form-row full">
+                <label for="puebloResidencia">Pueblo de residencia</label>
+                <select id="puebloResidencia" name="puebloResidencia" required>
+<option value="" selected disabled>Selecciona tu pueblo</option>
+                  <option value="Adjuntas">Adjuntas</option>
+                  <option value="Aguada">Aguada</option>
+                  <option value="Aguadilla">Aguadilla</option>
+                  <option value="Aguas Buenas">Aguas Buenas</option>
+                  <option value="Aibonito">Aibonito</option>
+                  <option value="Añasco">Añasco</option>
+                  <option value="Arecibo">Arecibo</option>
+                  <option value="Arroyo">Arroyo</option>
+                  <option value="Barceloneta">Barceloneta</option>
+                  <option value="Barranquitas">Barranquitas</option>
+                  <option value="Bayamón">Bayamón</option>
+                  <option value="Cabo Rojo">Cabo Rojo</option>
+                  <option value="Caguas">Caguas</option>
+                  <option value="Camuy">Camuy</option>
+                  <option value="Canóvanas">Canóvanas</option>
+                  <option value="Carolina">Carolina</option>
+                  <option value="Cataño">Cataño</option>
+                  <option value="Cayey">Cayey</option>
+                  <option value="Ceiba">Ceiba</option>
+                  <option value="Ciales">Ciales</option>
+                  <option value="Cidra">Cidra</option>
+                  <option value="Coamo">Coamo</option>
+                  <option value="Comerío">Comerío</option>
+                  <option value="Corozal">Corozal</option>
+                  <option value="Culebra">Culebra</option>
+                  <option value="Dorado">Dorado</option>
+                  <option value="Fajardo">Fajardo</option>
+                  <option value="Florida">Florida</option>
+                  <option value="Guánica">Guánica</option>
+                  <option value="Guayama">Guayama</option>
+                  <option value="Guayanilla">Guayanilla</option>
+                  <option value="Guaynabo">Guaynabo</option>
+                  <option value="Gurabo">Gurabo</option>
+                  <option value="Hatillo">Hatillo</option>
+                  <option value="Hormigueros">Hormigueros</option>
+                  <option value="Humacao">Humacao</option>
+                  <option value="Isabela">Isabela</option>
+                  <option value="Jayuya">Jayuya</option>
+                  <option value="Juana Díaz">Juana Díaz</option>
+                  <option value="Juncos">Juncos</option>
+                  <option value="Lajas">Lajas</option>
+                  <option value="Lares">Lares</option>
+                  <option value="Las Marías">Las Marías</option>
+                  <option value="Las Piedras">Las Piedras</option>
+                  <option value="Loíza">Loíza</option>
+                  <option value="Luquillo">Luquillo</option>
+                  <option value="Manatí">Manatí</option>
+                  <option value="Maricao">Maricao</option>
+                  <option value="Maunabo">Maunabo</option>
+                  <option value="Mayagüez">Mayagüez</option>
+                  <option value="Moca">Moca</option>
+                  <option value="Morovis">Morovis</option>
+                  <option value="Naguabo">Naguabo</option>
+                  <option value="Naranjito">Naranjito</option>
+                  <option value="Orocovis">Orocovis</option>
+                  <option value="Patillas">Patillas</option>
+                  <option value="Peñuelas">Peñuelas</option>
+                  <option value="Ponce">Ponce</option>
+                  <option value="Quebradillas">Quebradillas</option>
+                  <option value="Rincón">Rincón</option>
+                  <option value="Río Grande">Río Grande</option>
+                  <option value="Sabana Grande">Sabana Grande</option>
+                  <option value="Salinas">Salinas</option>
+                  <option value="San Germán">San Germán</option>
+                  <option value="San Juan">San Juan</option>
+                  <option value="San Lorenzo">San Lorenzo</option>
+                  <option value="San Sebastián">San Sebastián</option>
+                  <option value="Santa Isabel">Santa Isabel</option>
+                  <option value="Toa Alta">Toa Alta</option>
+                  <option value="Toa Baja">Toa Baja</option>
+                  <option value="Trujillo Alto">Trujillo Alto</option>
+                  <option value="Utuado">Utuado</option>
+                  <option value="Vega Alta">Vega Alta</option>
+                  <option value="Vega Baja">Vega Baja</option>
+                  <option value="Vieques">Vieques</option>
+                  <option value="Villalba">Villalba</option>
+                  <option value="Yabucoa">Yabucoa</option>
+                  <option value="Yauco">Yauco</option>
+                </select>
+              </div>
 
-          <div class="form-row">
-            <label for="telefonoEquipo">Número de teléfono</label>
-            <input id="telefonoEquipo" name="telefonoEquipo" type="tel" placeholder="(787) 000-0000" required>
-          </div>
+              <div class="form-row">
+                <label for="emailEquipo">Email</label>
+                <input id="emailEquipo" name="emailEquipo" type="email" placeholder="correo@ejemplo.com" required>
+              </div>
 
-          <button type="submit" class="team-submit">Enviar solicitud por WhatsApp</button>
-          <p class="form-note">
-            Al enviar, se abrirá WhatsApp con tu información lista para compartir con A Better You.
-          </p>
-        </form>
+              <div class="form-row">
+                <label for="telefonoEquipo">Número de teléfono</label>
+                <input id="telefonoEquipo" name="telefonoEquipo" type="tel" placeholder="(787) 000-0000" required>
+              </div>
+            </div>
+
+            <button type="submit" class="team-submit">Enviar por WhatsApp</button>
+            <p class="form-note">Tu información se enviará directamente al chat de A Better You.</p>
+          </form>
+        </div>
       </div>
     </section>
+
+
+
 
     <section class="cta container" id="contacto">
       <div class="cta-card">
@@ -1559,6 +1792,7 @@
     </div>
   </footer>
 
+  
   <script>
     const teamForm = document.getElementById('teamForm');
 
@@ -1572,16 +1806,23 @@
         const telefono = document.getElementById('telefonoEquipo').value.trim();
 
         const mensaje =
-          'Hola, me interesa unirme al equipo de A Better You.%0A%0A' +
-          'Nombre completo: ' + encodeURIComponent(nombre) + '%0A' +
-          'Pueblo de residencia: ' + encodeURIComponent(pueblo) + '%0A' +
-          'Email: ' + encodeURIComponent(email) + '%0A' +
-          'Número de teléfono: ' + encodeURIComponent(telefono);
+          'Hola, me interesa unirme al equipo de A Better You.
 
-        window.open('https://wa.me/18603748971?text=' + mensaje, '_blank');
+' +
+          'Nombre completo: ' + nombre + '
+' +
+          'Pueblo de residencia: ' + pueblo + '
+' +
+          'Email: ' + email + '
+' +
+          'Número de teléfono: ' + telefono;
+
+        const url = 'https://wa.me/18603748971?text=' + encodeURIComponent(mensaje);
+        window.open(url, '_blank');
       });
     }
   </script>
+
 
 </body>
 </html>
