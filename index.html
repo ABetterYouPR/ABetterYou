@@ -994,61 +994,101 @@
         padding: 10px;
         border-radius: 26px;
         display: grid;
-        gap: 12px;
+        grid-template-columns: minmax(0, 1fr) auto;
+        align-items: center;
+        gap: 10px;
       }
 
       .brand {
         width: 100%;
-        justify-content: center;
-        text-align: center;
-        gap: 12px;
-        padding: 8px 10px;
+        justify-content: flex-start;
+        text-align: left;
+        gap: 11px;
+        padding: 7px 9px;
+        min-width: 0;
       }
 
       .brand-logo {
-        width: 84px;
-        height: 84px;
+        width: 76px;
+        height: 76px;
         border-radius: 18px;
       }
 
       .brand-text {
         align-items: flex-start;
+        min-width: 0;
       }
 
       .brand-text strong {
-        font-size: 0.88rem;
-        letter-spacing: 0.12em;
+        font-size: 0.82rem;
+        letter-spacing: 0.11em;
       }
 
       .brand-text span {
         display: block;
-        font-size: 0.60rem;
-        letter-spacing: 0.11em;
+        font-size: 0.56rem;
+        letter-spacing: 0.10em;
+      }
+
+      .mobile-menu-toggle {
+        display: inline-flex;
       }
 
       .nav-links {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-column: 1 / -1;
+        display: flex;
+        align-items: center;
         gap: 9px;
         width: 100%;
-        overflow: visible;
+        max-height: 0;
+        opacity: 0;
+        visibility: hidden;
+        overflow-x: auto;
+        overflow-y: hidden;
         padding: 0;
+        margin-top: 0;
+        border-radius: 20px;
+        background: rgba(255,255,255,0.03);
+        border: 1px solid transparent;
+        transition:
+          max-height 0.34s ease,
+          opacity 0.22s ease,
+          visibility 0.22s ease,
+          padding 0.34s ease,
+          margin-top 0.34s ease,
+          border-color 0.34s ease;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        touch-action: pan-x;
+      }
+
+      .nav-links::-webkit-scrollbar {
+        display: none;
+      }
+
+      .nav-links.mobile-open {
+        max-height: 92px;
+        opacity: 1;
+        visibility: visible;
+        padding: 12px;
+        margin-top: 4px;
+        border-color: rgba(255,255,255,0.10);
       }
 
       .nav-links a {
-        width: 100%;
+        flex: 0 0 auto;
         min-height: 44px;
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        white-space: normal;
+        white-space: nowrap;
         text-align: center;
-        padding: 11px 10px;
+        padding: 11px 15px;
         border-radius: 999px;
-        background: rgba(255,255,255,0.06);
-        border: 1px solid rgba(255,255,255,0.10);
+        background: rgba(255,255,255,0.07);
+        border: 1px solid rgba(255,255,255,0.12);
         font-size: 0.88rem;
-        line-height: 1.2;
+        line-height: 1;
       }
 
       .hero {
@@ -1404,13 +1444,25 @@
         font-size: 0.56rem;
       }
 
-      .nav-links {
-        grid-template-columns: 1fr;
+      .brand-logo {
+        width: 68px;
+        height: 68px;
+      }
+
+      .mobile-menu-toggle {
+        width: 50px;
+        height: 50px;
+        border-radius: 16px;
+      }
+
+      .nav-links.mobile-open {
+        max-height: 86px;
+        padding: 10px;
       }
 
       .nav-links a {
-        padding: 11px 12px;
-        font-size: 0.86rem;
+        padding: 10px 13px;
+        font-size: 0.84rem;
       }
 
       h1 {
@@ -1856,9 +1908,11 @@
         width: 100%;
       }
     }
-
     .admin-mini-access {
-      margin-top: 12px;
+      width: 100%;
+      margin-top: 22px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255,255,255,0.08);
       text-align: center;
     }
 
@@ -1866,25 +1920,46 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 8px 12px;
+      gap: 8px;
+      padding: 11px 18px;
       border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.12);
-      background: rgba(255,255,255,0.04);
-      color: rgba(255,255,255,0.58);
-      font-size: 0.78rem;
-      font-weight: 700;
-      letter-spacing: 0.04em;
+      border: 1px solid rgba(255,255,255,0.24);
+      background: rgba(255,255,255,0.10);
+      color: #ffffff;
+      font-size: 0.88rem;
+      font-weight: 900;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
       transition: 0.25s ease;
+      box-shadow: 0 12px 34px rgba(0,0,0,0.26);
+    }
+
+    .admin-mini-access a::before {
+      content: "⚙";
+      font-size: 0.95rem;
+      opacity: 0.9;
     }
 
     .admin-mini-access a:hover {
-      color: #fff;
-      background: rgba(255,255,255,0.10);
-      border-color: rgba(255,255,255,0.22);
+      transform: translateY(-2px);
+      color: #050505;
+      background: #ffffff;
+      border-color: rgba(255,255,255,0.80);
     }
 
-  </style>
+    @media (max-width: 720px) {
+      .admin-mini-access {
+        margin-top: 18px;
+        padding-top: 16px;
+      }
+
+      .admin-mini-access a {
+        padding: 11px 16px;
+        font-size: 0.84rem;
+      }
+    }
+
+</style>
 </head>
 
 <body>
@@ -1909,7 +1984,13 @@
         </span>
       </a>
 
-      <div class="nav-links">
+      <button class="mobile-menu-toggle" id="mobileMenuToggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="mainNavLinks">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <div class="nav-links" id="mainNavLinks">
         <a href="#inicio">Inicio</a>
         <a href="#nosotros">Nosotros</a>
         <a href="#mega-te">Mega Té</a>
@@ -2308,21 +2389,40 @@
 
 
 
-    <section class="cta container" id="contacto">
-      <div class="cta-card">
-        <div>
-          <h2>Contáctanos por WhatsApp</h2>
+    
+    <section class="contact-section container" id="contacto">
+      <div class="contact-card">
+        <div class="contact-copy">
+          <div class="eyebrow">
+            <span class="eyebrow-dot"></span>
+            Contacto directo
+          </div>
+
+          <h2>¿Listo para ordenar?</h2>
           <p>
-            ¿Quieres ordenar un Mega Té o hacer una pregunta? Escríbenos directamente
-            al <strong>+1 (860) 374-8971</strong> y con gusto te ayudamos.
+            Escríbenos por WhatsApp para hacer tu pedido, preguntar por sabores disponibles
+            o recibir ayuda personalizada de A Better You.
           </p>
+
+          <div class="contact-highlights">
+            <span>Pedidos rápidos</span>
+            <span>Atención directa</span>
+            <span>Mega Té disponibles</span>
+          </div>
         </div>
 
-        <a href="https://wa.me/18603748971?text=Hola%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20A%20Better%20You." class="primary-btn" target="_blank" rel="noopener noreferrer">
-          Escribir por WhatsApp
-        </a>
+        <div class="contact-action-box">
+          <span class="contact-label">WhatsApp</span>
+          <strong>+1 (860) 374-8971</strong>
+          <p>Abre el chat y te atendemos lo antes posible.</p>
+
+          <a href="https://wa.me/18603748971?text=Hola%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20A%20Better%20You." class="contact-whatsapp-btn" target="_blank" rel="noopener noreferrer">
+            Escribir por WhatsApp
+          </a>
+        </div>
       </div>
     </section>
+
 
   </main>
 
@@ -2771,6 +2871,43 @@ window.ABY_SUPABASE_ANON_KEY = "sb_publishable_PCW9rqoKgvqy7A58lCRhcQ_oX93OeRO";
   init();
 
 })();
+  </script>
+
+
+  <script>
+    (function () {
+      const menuButton = document.getElementById('mobileMenuToggle');
+      const navLinks = document.getElementById('mainNavLinks');
+
+      if (!menuButton || !navLinks) return;
+
+      function closeMobileMenu() {
+        navLinks.classList.remove('mobile-open');
+        menuButton.classList.remove('is-open');
+        menuButton.setAttribute('aria-expanded', 'false');
+        menuButton.setAttribute('aria-label', 'Abrir menú');
+      }
+
+      function toggleMobileMenu() {
+        const willOpen = !navLinks.classList.contains('mobile-open');
+        navLinks.classList.toggle('mobile-open', willOpen);
+        menuButton.classList.toggle('is-open', willOpen);
+        menuButton.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+        menuButton.setAttribute('aria-label', willOpen ? 'Cerrar menú' : 'Abrir menú');
+      }
+
+      menuButton.addEventListener('click', toggleMobileMenu);
+
+      navLinks.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', closeMobileMenu);
+      });
+
+      window.addEventListener('resize', function () {
+        if (window.innerWidth > 720) {
+          closeMobileMenu();
+        }
+      });
+    })();
   </script>
 
 </body>
