@@ -1628,7 +1628,7 @@
           <form class="team-form" id="teamForm">
             <div class="team-form-head">
               <h3>Queremos conocerte</h3>
-              <p>Completa tus datos y se abrirá WhatsApp con tu solicitud lista para enviar.</p>
+              <p>Completa tus datos y se abrirá WhatsApp con tu solicitud escrita y lista para que presiones enviar.</p>
             </div>
 
             <div class="form-grid">
@@ -1733,8 +1733,8 @@
               </div>
             </div>
 
-            <button type="submit" class="team-submit">Enviar por WhatsApp</button>
-            <p class="form-note">Tu información se enviará directamente al chat de A Better You.</p>
+            <button type="submit" class="team-submit">Abrir WhatsApp con mi solicitud</button>
+            <p class="form-note">WhatsApp abrirá el mensaje preparado. Solo tendrás que presionar enviar.</p>
           </form>
         </div>
       </div>
@@ -1818,7 +1818,7 @@
 
         const url = 'https://wa.me/18603748971?text=' + encodeURIComponent(mensaje);
 
-        // Abre WhatsApp correctamente sin enviar el formulario ni borrar los datos.
+        // Abre WhatsApp con el mensaje preescrito; la persona presiona enviar dentro del chat.
         window.location.href = url;
       });
     })();
