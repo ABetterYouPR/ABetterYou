@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="A Better You - Una experiencia moderna, elegante y enfocada en ayudarte a lograr una mejor versión de ti." />
-  <title>A Better You | Verano</title>
+  <title>A Better You | Propuesta 1 — Tropical Sunset Resort</title>
 
   <style>
     :root {
@@ -2096,7 +2096,7 @@
     }
 
   
-    /* ===== NAVBAR DESKTOP MÁS COMPACTO ===== */
+    /* ===== NAVBAR DESKTOP COMPACTA Y PROFESIONAL ===== */
     @media (min-width: 1025px) {
       .navbar {
         top: 16px;
@@ -2167,17 +2167,16 @@
     }
 
 
-    /* ===== ESTILO VERANO HAWAII ===== */
+    /* ===== PROPUESTA 1: TROPICAL SUNSET RESORT ===== */
     body {
       background:
-        radial-gradient(circle at 84% 10%, rgba(255, 206, 83, 0.32), transparent 18%),
-        radial-gradient(circle at 18% 13%, rgba(255, 136, 94, 0.22), transparent 20%),
-        radial-gradient(circle at 50% 92%, rgba(42, 224, 205, 0.18), transparent 32%),
-        radial-gradient(circle at 70% 55%, rgba(74, 177, 255, 0.12), transparent 34%),
-        linear-gradient(180deg, #071216 0%, #050505 42%, #050505 100%);
+        radial-gradient(circle at 80% 10%, rgba(255, 189, 90, 0.34), transparent 18%),
+        radial-gradient(circle at 22% 18%, rgba(255, 123, 94, 0.22), transparent 24%),
+        radial-gradient(circle at 52% 88%, rgba(64, 221, 205, 0.16), transparent 30%),
+        linear-gradient(180deg, #11100e 0%, #090707 38%, #050505 100%);
     }
 
-    .hawaii-scene {
+    .proposal-scene {
       position: fixed;
       inset: 0;
       pointer-events: none;
@@ -2185,177 +2184,91 @@
       overflow: hidden;
     }
 
-    .summer-sun {
+    .sunset-orb {
       position: absolute;
-      top: 54px;
-      right: clamp(18px, 6vw, 94px);
-      width: clamp(110px, 14vw, 205px);
-      height: clamp(110px, 14vw, 205px);
+      top: 52px;
+      right: clamp(20px, 6vw, 90px);
+      width: clamp(120px, 15vw, 220px);
+      height: clamp(120px, 15vw, 220px);
       border-radius: 50%;
       background:
-        radial-gradient(circle at 35% 35%, rgba(255, 247, 204, 1) 0%, rgba(255, 210, 95, 0.98) 42%, rgba(255, 151, 69, 0.92) 100%);
+        radial-gradient(circle at 35% 35%, rgba(255,244,200,1) 0%, rgba(255,190,80,0.98) 45%, rgba(255,110,82,0.94) 100%);
       box-shadow:
-        0 0 0 16px rgba(255, 198, 85, 0.08),
-        0 0 80px rgba(255, 197, 85, 0.42),
-        0 0 160px rgba(255, 155, 69, 0.20);
-      opacity: 0.96;
+        0 0 80px rgba(255,185,85,0.42),
+        0 0 180px rgba(255,120,80,0.20);
     }
 
-    .summer-sun::before,
-    .summer-sun::after {
-      content: "";
+    .sunset-wave {
       position: absolute;
-      inset: -22px;
+      left: -10%;
+      width: 120%;
       border-radius: 50%;
-      border: 1px solid rgba(255, 220, 130, 0.18);
+      background: rgba(65, 218, 205, 0.10);
+      filter: blur(2px);
     }
 
-    .summer-sun::after {
-      inset: -42px;
-      border-color: rgba(255, 220, 130, 0.10);
-    }
-
-    .palm {
-      position: absolute;
-      bottom: -24px;
-      width: clamp(180px, 22vw, 340px);
-      height: clamp(330px, 43vw, 620px);
-      opacity: 0.72;
-      filter: drop-shadow(0 18px 38px rgba(0,0,0,0.44));
-    }
-
-    .palm-left {
-      left: -32px;
-      transform: rotate(-5deg);
-    }
-
-    .palm-right {
-      right: -36px;
-      transform: scaleX(-1) rotate(-6deg);
-    }
-
-    .palm-trunk {
-      position: absolute;
-      bottom: 0;
-      left: 47%;
-      width: 28px;
-      height: 72%;
-      border-radius: 999px;
-      background:
-        repeating-linear-gradient(
-          180deg,
-          rgba(120, 80, 38, 0.98) 0 22px,
-          rgba(86, 55, 25, 0.98) 22px 28px
-        );
-      transform: translateX(-50%) rotate(8deg);
-      box-shadow: inset -5px 0 0 rgba(0,0,0,0.18);
-    }
-
-    .palm-leaves {
-      position: absolute;
-      left: 50%;
-      top: 6%;
-      width: 100%;
-      height: 42%;
-      transform: translateX(-50%);
-    }
-
-    .palm-leaves span {
-      position: absolute;
-      left: 50%;
-      top: 48%;
-      width: 62%;
-      height: 22px;
-      border-radius: 999px 999px 999px 0;
-      background:
-        linear-gradient(90deg, rgba(18, 118, 79, 0.98), rgba(59, 188, 113, 0.92));
-      transform-origin: left center;
-      box-shadow: inset 0 -4px 0 rgba(0,0,0,0.16);
-    }
-
-    .palm-leaves span:nth-child(1) { transform: rotate(-58deg); }
-    .palm-leaves span:nth-child(2) { transform: rotate(-31deg); width: 70%; }
-    .palm-leaves span:nth-child(3) { transform: rotate(-8deg); width: 76%; }
-    .palm-leaves span:nth-child(4) { transform: rotate(20deg); width: 72%; }
-    .palm-leaves span:nth-child(5) { transform: rotate(46deg); width: 66%; }
-
-    .tropical-glow {
-      position: absolute;
-      left: 50%;
-      bottom: -180px;
-      width: min(980px, 100vw);
+    .sunset-wave-one {
+      bottom: -210px;
       height: 420px;
-      transform: translateX(-50%);
-      border-radius: 50%;
+    }
+
+    .sunset-wave-two {
+      bottom: -260px;
+      height: 480px;
+      background: rgba(255, 156, 95, 0.08);
+    }
+
+    .sunset-leaf {
+      position: absolute;
+      width: clamp(180px, 22vw, 320px);
+      height: clamp(180px, 22vw, 320px);
+      border-radius: 50% 0 50% 0;
       background:
-        radial-gradient(circle at center, rgba(23, 210, 197, 0.18), transparent 64%);
-      filter: blur(6px);
+        linear-gradient(135deg, rgba(60, 179, 118, 0.28), rgba(23, 100, 74, 0.08));
+      filter: blur(0.2px);
+      opacity: 0.78;
+    }
+
+    .leaf-left {
+      left: -82px;
+      bottom: 42px;
+      transform: rotate(20deg);
+    }
+
+    .leaf-right {
+      right: -90px;
+      bottom: 30px;
+      transform: rotate(-35deg);
     }
 
     .summer-ribbon {
-      background:
-        linear-gradient(90deg, rgba(255, 199, 87, 0.16), rgba(42, 224, 205, 0.14), rgba(255, 122, 92, 0.16));
-      border-color: rgba(255,255,255,0.16);
-    }
-
-    .season-chip::before {
-      background: rgba(255, 201, 73, 1);
-      box-shadow: 0 0 18px rgba(255, 201, 73, 0.92);
+      background: linear-gradient(90deg, rgba(255,180,85,0.18), rgba(255,116,95,0.16), rgba(66,218,205,0.12));
     }
 
     .logo-card.logo-only,
-    .team-card,
     .contact-card,
-    .herbalife-footer-card,
-    .owner-photo-card,
+    .team-card,
+    .mega-card,
     .panel,
-    .mega-card {
+    .herbalife-footer-card {
       backdrop-filter: blur(18px);
     }
 
-    .logo-card.logo-only {
-      background:
-        radial-gradient(circle at top right, rgba(255, 205, 90, 0.12), transparent 28%),
-        radial-gradient(circle at bottom left, rgba(43, 225, 205, 0.10), transparent 32%),
-        rgba(255,255,255,0.06);
-    }
-
-    .contact-action-box::before {
-      background: rgba(255, 194, 76, 0.10);
-    }
-
-    @media (max-width: 1024px) {
-      .summer-sun {
-        top: 42px;
-        right: 18px;
-        opacity: 0.72;
-      }
-
-      .palm {
-        opacity: 0.44;
-      }
+    .season-chip::before {
+      background: rgba(255,185,78,1);
+      box-shadow: 0 0 18px rgba(255,185,78,0.88);
     }
 
     @media (max-width: 720px) {
-      .summer-sun {
-        top: 22px;
+      .sunset-orb {
+        top: 24px;
         right: 8px;
         width: 96px;
         height: 96px;
       }
 
-      .palm {
-        width: 160px;
-        height: 310px;
+      .sunset-leaf {
         opacity: 0.34;
-      }
-
-      .palm-left {
-        left: -46px;
-      }
-
-      .palm-right {
-        right: -48px;
       }
     }
 
@@ -2365,25 +2278,15 @@
 <body>
   <div class="page-glow"></div>
 
-  <div class="hawaii-scene" aria-hidden="true">
-    <div class="summer-sun"></div>
-    <div class="palm palm-left">
-      <div class="palm-trunk"></div>
-      <div class="palm-leaves">
-        <span></span><span></span><span></span><span></span><span></span>
-      </div>
-    </div>
-    <div class="palm palm-right">
-      <div class="palm-trunk"></div>
-      <div class="palm-leaves">
-        <span></span><span></span><span></span><span></span><span></span>
-      </div>
-    </div>
-    <div class="tropical-glow"></div>
+  <div class="proposal-scene sunset-scene" aria-hidden="true">
+    <div class="sunset-orb"></div>
+    <div class="sunset-wave sunset-wave-one"></div>
+    <div class="sunset-wave sunset-wave-two"></div>
+    <div class="sunset-leaf leaf-left"></div>
+    <div class="sunset-leaf leaf-right"></div>
   </div>
 
-
-  <div class="summer-ribbon">
+<div class="summer-ribbon">
     <span class="summer-dot"></span>
     <span><strong>Temporada Verano:</strong> Mega Té refrescantes, vibra tropical y diseño que cambia con cada temporada.</span>
   </div>
