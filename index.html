@@ -1748,105 +1748,52 @@ select:focus{
 }
 
 
-/* ===== ORDEN EN PDF / RECIBO PREMIUM ===== */
-.order-details{
+/* ===== EMAIL PARA RECIBO ===== */
+.order-email-box{
   display:grid;
-  gap:10px;
+  gap:8px;
   margin:16px 0;
   padding:16px;
   border-radius:22px;
   background:rgba(255,255,255,.06);
   border:1px solid rgba(255,255,255,.10);
 }
-.order-details h3{
-  margin:0 0 2px;
-  font-size:1.08rem;
-  letter-spacing:-.02em;
+.order-email-box label{
+  font-size:.9rem;
+  font-weight:900;
+  color:rgba(255,255,255,.92);
 }
-.order-details label{
-  display:grid;
-  gap:7px;
-  font-size:.88rem;
-  color:rgba(255,255,255,.86);
-  font-weight:850;
-}
-.order-details input,
-.order-details textarea{
+.order-email-box input{
   width:100%;
-  padding:13px 14px;
+  min-height:50px;
+  padding:14px 15px;
   border-radius:16px;
-  border:1px solid rgba(255,255,255,.14);
+  border:1px solid rgba(255,255,255,.16);
   background:rgba(255,255,255,.08);
   color:#fff;
   outline:none;
   font:inherit;
-  resize:vertical;
 }
-.order-details input::placeholder,
-.order-details textarea::placeholder{
-  color:rgba(255,255,255,.42);
+.order-email-box input::placeholder{
+  color:rgba(255,255,255,.44);
 }
-.order-details input:focus,
-.order-details textarea:focus{
-  border-color:rgba(255,255,255,.34);
-  box-shadow:0 0 0 4px rgba(255,255,255,.05);
+.order-email-box input:focus{
+  border-color:rgba(255,255,255,.36);
+  box-shadow:0 0 0 4px rgba(255,255,255,.06);
 }
-.order-pdf-toast{
-  position:fixed;
-  left:50%;
-  bottom:96px;
-  z-index:220;
-  transform:translateX(-50%) translateY(16px);
-  max-width:min(560px,calc(100% - 22px));
-  padding:15px 18px;
-  border-radius:999px;
-  background:rgba(15,15,15,.94);
-  color:#fff;
-  border:1px solid rgba(255,255,255,.18);
-  box-shadow:0 24px 80px rgba(0,0,0,.55);
-  opacity:0;
-  pointer-events:none;
-  transition:opacity .28s ease, transform .28s ease;
-  text-align:center;
-  font-size:.94rem;
-  font-weight:850;
+.order-email-box p{
+  margin:0;
+  color:rgba(255,255,255,.64);
+  font-size:.88rem;
+  line-height:1.5;
 }
-.order-pdf-toast.show{
-  opacity:1;
-  transform:translateX(-50%) translateY(0);
-}
-.cart-footer button[data-send-order]{
-  position:relative;
-  overflow:hidden;
-}
-.cart-footer button[data-send-order]::before{
-  content:"PDF";
-  position:absolute;
-  right:14px;
-  top:50%;
-  transform:translateY(-50%);
-  padding:5px 8px;
-  border-radius:999px;
-  background:rgba(17,17,17,.12);
-  font-size:.72rem;
-  font-weight:950;
-  letter-spacing:.04em;
+.order-email-error{
+  color:#ffd0c8 !important;
 }
 @media(max-width:820px){
-  .order-details{
+  .order-email-box{
     padding:14px;
     border-radius:20px;
-  }
-  .order-details input,
-  .order-details textarea{
-    min-height:48px;
-    padding:12px 13px;
-    border-radius:15px;
-  }
-  .order-pdf-toast{
-    bottom:86px;
-    border-radius:22px;
-    line-height:1.45;
   }
 }
 
@@ -2137,25 +2084,15 @@ select:focus{
   <p class="cart-empty" data-cart-empty>Añade bebidas al carrito para enviar la orden.</p>
   <div class="cart-items" data-cart-items></div>
   
-  <div class="order-details">
-    <h3>Datos para el recibo</h3>
-    <label>
-      Nombre
-      <input id="orderCustomerName" type="text" placeholder="Nombre para la orden">
-    </label>
-    <label>
-      Teléfono
-      <input id="orderCustomerPhone" type="tel" placeholder="Número de contacto">
-    </label>
-    <label>
-      Nota
-      <textarea id="orderNotes" rows="2" placeholder="Ej. retirar a las 5:00 PM"></textarea>
-    </label>
+  <div class="order-email-box">
+    <label for="orderCustomerEmail">Email para recibir el recibo</label>
+    <input id="orderCustomerEmail" type="email" placeholder="correo@ejemplo.com" required>
+    <p>Tu email irá incluido en la orden para poder enviarte el recibo de compra.</p>
   </div>
 
   <div class="cart-footer">
     <div class="cart-total"><span>Total</span><strong data-cart-total>$0.00</strong></div>
-    <button type="button" data-send-order onclick="shareOrderPdf()">Compartir orden en PDF</button>
+    <button type="button" data-send-order onclick="sendOrderWhatsApp()">Enviar orden por WhatsApp</button>
     <button class="clear-btn" type="button" onclick="clearCart()">Vaciar carrito</button>
   </div>
 </section>
@@ -2265,208 +2202,42 @@ function renderCart() {
   orderButtons.forEach(btn => btn.disabled = !items.length);
 }
 
-function showOrderPdfToast(message) {
-  let toast = document.getElementById("orderPdfToast");
-  if (!toast) {
-    toast = document.createElement("div");
-    toast.id = "orderPdfToast";
-    toast.className = "order-pdf-toast";
-    document.body.appendChild(toast);
-  }
-  toast.textContent = message;
-  toast.classList.add("show");
-  clearTimeout(window.__orderPdfToastTimer);
-  window.__orderPdfToastTimer = setTimeout(() => {
-    toast.classList.remove("show");
-  }, 4200);
-}
-
-function getOrderMetadata() {
-  return {
-    customerName: (document.getElementById("orderCustomerName")?.value || "").trim(),
-    customerPhone: (document.getElementById("orderCustomerPhone")?.value || "").trim(),
-    notes: (document.getElementById("orderNotes")?.value || "").trim()
-  };
-}
-
-function cleanPdfText(value) {
-  return String(value || "")
-    .replace(/[^\x20-\x7EáéíóúüñÁÉÍÓÚÜÑ$.,:;#()\/\- ]/g, "")
-    .trim();
-}
-
-function makeOrderNumber() {
-  const now = new Date();
-  const pad = (n) => String(n).padStart(2, "0");
-  return `ABY-${now.getFullYear()}${pad(now.getMonth()+1)}${pad(now.getDate())}-${pad(now.getHours())}${pad(now.getMinutes())}${pad(now.getSeconds())}`;
-}
-
-async function buildOrderPdfBlob() {
-  const items = cartEntries();
-  if (!items.length) return null;
-
-  if (!window.jspdf || !window.jspdf.jsPDF) {
-    throw new Error("jsPDF no está disponible.");
-  }
-
-  const { jsPDF } = window.jspdf;
-  const doc = new jsPDF({
-    orientation: "p",
-    unit: "mm",
-    format: "a4"
-  });
-
-  const meta = getOrderMetadata();
-  const orderNumber = makeOrderNumber();
-  const now = new Date();
-  const dateText = now.toLocaleString("es-PR", {
-    dateStyle: "medium",
-    timeStyle: "short"
-  });
-
-  // Page base
-  const pageWidth = doc.internal.pageSize.getWidth();
-  const margin = 16;
-  let y = 18;
-
-  // Header background
-  doc.setFillColor(18, 18, 18);
-  doc.roundedRect(margin, y, pageWidth - margin * 2, 34, 5, 5, "F");
-
-  doc.setTextColor(255, 255, 255);
-  doc.setFont("helvetica", "bold");
-  doc.setFontSize(18);
-  doc.text("A BETTER YOU", margin + 7, y + 13);
-
-  doc.setFontSize(10);
-  doc.setFont("helvetica", "normal");
-  doc.text("Recibo / Orden de Mega Te", margin + 7, y + 22);
-  doc.text(`Orden: ${orderNumber}`, pageWidth - margin - 7, y + 13, { align: "right" });
-  doc.text(dateText, pageWidth - margin - 7, y + 22, { align: "right" });
-
-  y += 44;
-
-  // Customer block
-  doc.setTextColor(20, 20, 20);
-  doc.setFillColor(245, 245, 245);
-  doc.roundedRect(margin, y, pageWidth - margin * 2, 28, 4, 4, "F");
-  doc.setFont("helvetica", "bold");
-  doc.setFontSize(11);
-  doc.text("Datos de la orden", margin + 6, y + 8);
-
-  doc.setFont("helvetica", "normal");
-  doc.setFontSize(10);
-  const customerLine = meta.customerName ? `Nombre: ${cleanPdfText(meta.customerName)}` : "Nombre: No indicado";
-  const phoneLine = meta.customerPhone ? `Telefono: ${cleanPdfText(meta.customerPhone)}` : "Telefono: No indicado";
-  doc.text(customerLine, margin + 6, y + 16);
-  doc.text(phoneLine, pageWidth / 2 + 2, y + 16);
-
-  if (meta.notes) {
-    const noteLines = doc.splitTextToSize(`Nota: ${cleanPdfText(meta.notes)}`, pageWidth - margin * 2 - 12);
-    doc.text(noteLines, margin + 6, y + 23);
-  }
-
-  y += 38;
-
-  // Table heading
-  doc.setFillColor(28, 28, 28);
-  doc.roundedRect(margin, y, pageWidth - margin * 2, 10, 3, 3, "F");
-  doc.setTextColor(255, 255, 255);
-  doc.setFont("helvetica", "bold");
-  doc.setFontSize(10);
-  doc.text("Producto", margin + 5, y + 6.5);
-  doc.text("Cant.", pageWidth - 72, y + 6.5, { align: "right" });
-  doc.text("Precio", pageWidth - 42, y + 6.5, { align: "right" });
-  doc.text("Subtotal", pageWidth - margin - 5, y + 6.5, { align: "right" });
-
-  y += 14;
-
-  // Items
-  doc.setTextColor(22, 22, 22);
-  doc.setFont("helvetica", "normal");
-  doc.setFontSize(10);
-
-  items.forEach(({ product, qty }, idx) => {
-    const rowHeight = 11;
-    const subtotal = product.price * qty;
-    if (idx % 2 === 0) {
-      doc.setFillColor(248, 248, 248);
-      doc.roundedRect(margin, y - 7, pageWidth - margin * 2, rowHeight, 2, 2, "F");
-    }
-    doc.text(cleanPdfText(product.name), margin + 5, y);
-    doc.text(String(qty), pageWidth - 72, y, { align: "right" });
-    doc.text(money(product.price), pageWidth - 42, y, { align: "right" });
-    doc.text(money(subtotal), pageWidth - margin - 5, y, { align: "right" });
-    y += rowHeight;
-  });
-
-  y += 4;
-
-  // Total
-  doc.setFillColor(18, 18, 18);
-  doc.roundedRect(pageWidth - margin - 62, y, 62, 16, 4, 4, "F");
-  doc.setTextColor(255, 255, 255);
-  doc.setFont("helvetica", "bold");
-  doc.setFontSize(11);
-  doc.text("TOTAL", pageWidth - margin - 56, y + 6);
-  doc.setFontSize(15);
-  doc.text(money(cartTotal()), pageWidth - margin - 6, y + 11, { align: "right" });
-
-  y += 28;
-
-  // Footer note
-  doc.setTextColor(60, 60, 60);
-  doc.setFont("helvetica", "normal");
-  doc.setFontSize(10);
-  const footer = doc.splitTextToSize(
-    "Gracias por ordenar en A Better You. Este PDF contiene el resumen de la orden para compartirlo con el negocio.",
-    pageWidth - margin * 2
-  );
-  doc.text(footer, margin, y);
-
-  const pdfArrayBuffer = doc.output("arraybuffer");
-  return {
-    blob: new Blob([pdfArrayBuffer], { type: "application/pdf" }),
-    orderNumber
-  };
-}
-
-function downloadOrderPdf(blob, orderNumber) {
-  const link = document.createElement("a");
-  const url = URL.createObjectURL(blob);
-  link.href = url;
-  link.download = `${orderNumber}.pdf`;
-  document.body.appendChild(link);
-  link.click();
-  link.remove();
-  setTimeout(() => URL.revokeObjectURL(url), 1500);
-}
-
-async function shareOrderPdf() {
+function sendOrderWhatsApp() {
   const items = cartEntries();
   if (!items.length) return;
 
-  try {
-    const result = await buildOrderPdfBlob();
-    if (!result) return;
-    const { blob, orderNumber } = result;
-    const file = new File([blob], `${orderNumber}.pdf`, { type: "application/pdf" });
+  const emailInput = document.getElementById("orderCustomerEmail");
+  const email = (emailInput?.value || "").trim();
 
-    if (navigator.canShare && navigator.canShare({ files: [file] }) && navigator.share) {
-      await navigator.share({
-        title: "Orden A Better You",
-        text: "Orden en PDF de A Better You.",
-        files: [file]
-      });
-      showOrderPdfToast("PDF listo para compartir.");
-    } else {
-      downloadOrderPdf(blob, orderNumber);
-      showOrderPdfToast("PDF generado y descargado. Puedes compartirlo por WhatsApp.");
+  if (!email || !email.includes("@")) {
+    if (emailInput) {
+      emailInput.focus();
+      emailInput.classList.add("order-email-error");
+      emailInput.setAttribute("aria-invalid", "true");
+      setTimeout(() => emailInput.classList.remove("order-email-error"), 1800);
     }
-  } catch (error) {
-    console.error(error);
-    showOrderPdfToast("No se pudo generar el PDF. Intenta nuevamente.");
+    alert("Escribe un email válido para recibir el recibo de compra.");
+    return;
   }
+
+  const lines = items.map(({product, qty}) => {
+    const subtotal = product.price * qty;
+    return `${qty}x ${product.name} — ${money(subtotal)}`;
+  });
+
+  const message = [
+    "Hola, quiero ordenar:",
+    "",
+    ...lines,
+    "",
+    `Total: ${money(cartTotal())}`,
+    `Email para recibo: ${email}`,
+    "",
+    "¿Me confirman disponibilidad y tiempo de preparación?"
+  ].join("\\n");
+
+  const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+  window.open(url, "_blank");
 }
 
 function flashCart() {
@@ -2563,5 +2334,8 @@ form.addEventListener("submit", async (event) => {
 })();
 </script>
 
-  <script src="https://cdn.jsdelivr.net/npm/jspdf@4.2.1/dist/jspdf.umd.min.js"></script>
+<!-- OPTIONAL_EMAIL_RECEIPT_EDGE_FUNCTION:
+Para enviar recibos automáticamente por email, conecta este formulario a una Edge Function de Supabase
+y a un proveedor de email transaccional. Se incluye una plantilla de función en el ZIP.
+-->
 </body></html>
